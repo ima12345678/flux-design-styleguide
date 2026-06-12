@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flux Design | Internal Identity Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="selection-screen" class="overlay">
+  <div class="intro-container">
+    <div class="logo-animation">FLUX<span>DESIGN</span></div>
+    <h1>Identitäts-Portal</h1>
+    <p>Wählen Sie Ihre Abteilung für personalisierte Handlungs-Leitfäden:</p>
+
+    <div class="role-grid">
+      <div class="role-item" onclick="initApp('sekretariat')">
+        <div class="avatar"><span>📞</span></div>
+        <p>Sekretariat</p>
+      </div>
+      <div class="role-item" onclick="initApp('leitung')">
+        <div class="avatar"><span>👔</span></div>
+        <p>Leitung</p>
+      </div>
+      <div class="role-item" onclick="initApp('design')">
+        <div class="avatar"><span>🎨</span></div>
+        <p>Design</p>
+      </div>
+      <div class="role-item" onclick="initApp('entwicklung')">
+        <div class="avatar"><span>&lt;/&gt;</span></div>
+        <p>Entwicklung</p>
+      </div>
+      <div class="role-item" onclick="initApp('social')">
+        <div class="avatar"><span>📱</span></div>
+        <p>Social Media</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="app-interface" class="hidden">
+  <nav class="top-nav">
+    <div class="brand" onclick="location.reload()">FLUX<span>DESIGN</span></div>
+    <div class="menu">
+      <button id="nav-philosophy" class="active" onclick="showSection('philosophy')">Philosophie</button>
+      <button id="nav-rules" onclick="showSection('rules')">Richtlinien</button>
+      <button id="nav-behavior" onclick="showSection('behavior')">Verhalten</button>
+    </div>
+  </nav>
+
+  <main class="content-wrapper">
+    <div id="role-tag" class="badge">Rolle: Gast</div>
+
+    <section id="sec-philosophy" class="content-section active">
+      <div class="hero">
+        <h2>Professionalität & Überzeugung</h2>
+        <p>Wir sind keine Möchtegern-Experten. Wir sind Flux Design – das medientechnische Kompetenzzentrum für High-End Web-Erlebnisse.</p>
+      </div>
+
+      <div class="card">
+        <h3>Das "Professionelle Du"</h3>
+        <p>Wir duzen uns intern und partnerbasiert mit Kunden. Es ist ein Du der Augenhöhe – respektvoll, warm und unerschütterlich kompetent.</p>
+      </div>
+
+      <div class="card accent">
+        <h3>Premium-Anspruch</h3>
+        <p>Qualität hat ihren Preis. Wir rechtfertigen unsere Kosten nicht durch Ausreden, sondern durch messbare Exzellenz in Performance und Design.</p>
+      </div>
+    </section>
+
+    <section id="sec-rules" class="content-section">
+      <h2>Visuelle Identität</h2>
+      <p>Unsere Marke ist schlicht, technisch brillant und konsequent.</p>
+
+      <div class="color-palette">
+        <div class="swatch onyx">#0D0D0D<br>Deep Onyx</div>
+        <div class="swatch white">#FFFFFF<br>Pure White</div>
+        <div class="swatch cyber">#00E5FF<br>Cyber Blue</div>
+      </div>
+
+      <div class="card">
+        <h3>Interne Hausschrift</h3>
+        <p>Wir nutzen ausschließlich <strong>Plus Jakarta Sans</strong>. Sie verkörpert Präzision und Modernität.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card do">
+          <h4>✅ Logo Do's</h4>
+          <ul>
+            <li>Immer auf Onyx oder Weiß platzieren.</li>
+            <li>Schutzraum von Breite 'X' einhalten.</li>
+            <li>Responsive Logo-Varianten nutzen.</li>
+          </ul>
+        </div>
+        <div class="card dont">
+          <h4>❌ Logo Dont's</h4>
+          <ul>
+            <li>Farben niemals verfremden.</li>
+            <li>Keine Transparenz-Effekte.</li>
+            <li>Niemals in Bilder schneiden.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-behavior" class="content-section">
+      <h2>Verhalten & Prozesse</h2>
+
+      <div id="phone-script" class="card role-specific" data-role="sekretariat leitung">
+        <h3>📞 Telefon-Leitfaden</h3>
+        <p><em>"Flux Design, Sie sprechen mit [Name]. Was können wir heute für Ihr digitales Anliegen tun?"</em></p>
+        <p>Bei Beschwerden: *"Um Ihnen die präziseste Lösung zu bieten, übergebe ich Sie an unseren technischen Leiter."*</p>
+      </div>
+
+      <div class="card crisis">
+        <h3>🚨 Krisen-Management: Keine Panik!</h3>
+        <p>Wir vertuschen nichts. Bei Verzögerungen kommunizieren wir proaktiv, sachlich und präsentieren sofort zwei alternative Lösungswege.</p>
+      </div>
+
+      <div id="dev-rules" class="card code role-specific" data-role="entwicklung design">
+        <h3>&lt;/&gt; Tech-Standard</h3>
+        <p><strong>Green Computing:</strong> Code so schlank wie möglich. Jedes KB Ladezeit, das wir sparen, ist ein Beweis unseres Können und schont Ressourcen.</p>
+      </div>
+
+      <div class="card">
+        <h3>🔒 Diskretion & Daten</h3>
+        <p>Während des Projekts: Absolute Stille nach außen. Keine Screenshots, keine Namen. Wir schützen das Kapital unserer Kunden.</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+  let currentRole = "";
+
+  function initApp(role) {
+    currentRole = role;
+    document.getElementById('selection-screen').classList.add('fade-out');
+    setTimeout(() => {
+      document.getElementById('selection-screen').style.display = 'none';
+      document.getElementById('app-interface').classList.remove('hidden');
+      updateRoleView();
+    }, 500);
+  }
+
+  function updateRoleView() {
+    const roleNames = {
+      'sekretariat': 'Sekretariat / Office',
+      'leitung': 'Geschäftsführung',
+      'design': 'UI/UX Design',
+      'entwicklung': 'Web-Entwicklung',
+      'social': 'Social Media Management'
+    };
+    document.getElementById('role-tag').innerText = "Abteilung: " + roleNames[currentRole];
+
+    // Filtert Inhalte, die für die Rolle spezifisch sind
+    document.querySelectorAll('.role-specific').forEach(el => {
+      const allowedRoles = el.getAttribute('data-role').split(' ');
+      el.style.display = allowedRoles.includes(currentRole) ? 'block' : 'none';
+    });
+  }
+
+  function showSection(id) {
+    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.menu button').forEach(b => b.classList.remove('active'));
+
+    document.getElementById('sec-' + id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo(0,0);
+  }
+</script>
+</body>
+</html>

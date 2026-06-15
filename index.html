@@ -3,134 +3,346 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flux Design | Internal Identity Guide</title>
+  <title>Flux Design | Internes Markenportal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <div id="selection-screen" class="overlay">
   <div class="intro-container">
-    <div class="logo-animation">FLUX<span>DESIGN</span></div>
-    <h1>Identitäts-Portal</h1>
-    <p>Wählen Sie Ihre Abteilung für personalisierte Handlungs-Leitfäden:</p>
+    <div class="brand-logo-svg">
+      <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="15" y="20" width="70" height="15" rx="7.5" fill="#115E67"/>
+        <rect x="30" y="42" width="55" height="15" rx="7.5" fill="#115E67" opacity="0.8"/>
+        <rect x="45" y="65" width="40" height="15" rx="7.5" fill="#115E67" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="logo-branding">FLUX<span>DESIGN</span></div>
+    <h1>Interne Markenidentität</h1>
+    <p>Wählen Sie Ihre Abteilung für personalisierte Handlungsleitfäden und Design-Assets:</p>
 
     <div class="role-grid">
       <div class="role-item" onclick="initApp('sekretariat')">
         <div class="avatar"><span>📞</span></div>
-        <p>Sekretariat</p>
+        <p>Sekretariat / Office</p>
       </div>
       <div class="role-item" onclick="initApp('leitung')">
-        <div class="avatar"><span>👔</span></div>
-        <p>Leitung</p>
+        <div class="avatar"><span>💼</span></div>
+        <p>Geschäftsführung</p>
       </div>
       <div class="role-item" onclick="initApp('design')">
         <div class="avatar"><span>🎨</span></div>
-        <p>Design</p>
+        <p>UI/UX Design & Brand</p>
       </div>
       <div class="role-item" onclick="initApp('entwicklung')">
         <div class="avatar"><span>&lt;/&gt;</span></div>
-        <p>Entwicklung</p>
+        <p>Web-Entwicklung</p>
       </div>
       <div class="role-item" onclick="initApp('social')">
         <div class="avatar"><span>📱</span></div>
-        <p>Social Media</p>
+        <p>Social Media & PR</p>
       </div>
     </div>
   </div>
 </div>
 
-<div id="app-interface" class="hidden">
-  <nav class="top-nav">
-    <div class="brand" onclick="location.reload()">FLUX<span>DESIGN</span></div>
-    <div class="menu">
-      <button id="nav-philosophy" class="active" onclick="showSection('philosophy')">Philosophie</button>
-      <button id="nav-rules" onclick="showSection('rules')">Richtlinien</button>
-      <button id="nav-behavior" onclick="showSection('behavior')">Verhalten</button>
-    </div>
-  </nav>
+<div id="app-interface" class="app-container hidden">
 
-  <main class="content-wrapper">
-    <div id="role-tag" class="badge">Rolle: Gast</div>
+  <aside class="sidebar">
+    <div class="sidebar-header" onclick="location.reload()">
+      <svg width="24" height="24" viewBox="0 0 100 100" fill="none" style="vertical-align: middle; margin-right: 10px;">
+        <rect x="15" y="20" width="70" height="15" rx="7.5" fill="#115E67"/>
+        <rect x="30" y="42" width="55" height="15" rx="7.5" fill="#115E67" opacity="0.8"/>
+        <rect x="45" y="65" width="40" height="15" rx="7.5" fill="#115E67" opacity="0.5"/>
+      </svg>FLUX<span>DESIGN</span>
+    </div>
+    <div class="user-badge-container">
+      <span id="role-tag" class="badge">Abteilung</span>
+    </div>
+    <nav class="sidebar-menu">
+      <div class="menu-category" id="cat-culture">Philosophie & Kultur</div>
+      <button id="nav-philosophy" class="menu-btn active" onclick="showSection('philosophy')">Grundwerte</button>
+      <button id="nav-communication" class="menu-btn" onclick="showSection('communication')">Kommunikation & Leitfäden</button>
+
+      <div class="menu-category" id="cat-visual">Visuelle Identität</div>
+      <button id="nav-logos" class="menu-btn" onclick="showSection('logos')">Logo-Architektur</button>
+      <button id="nav-typography" class="menu-btn" onclick="showSection('typography')">Typografie-Regeln</button>
+      <button id="nav-colors" class="menu-btn" onclick="showSection('colors')">Farbsystem (Screen/Print)</button>
+      <button id="nav-photography" class="menu-btn" onclick="showSection('photography')">Bildsprache & Fotos</button>
+
+      <div class="menu-category" id="cat-tech">Komponenten & Tech</div>
+      <button id="nav-grid" class="menu-btn" onclick="showSection('grid')">2x Grid-System</button>
+      <button id="nav-components" class="menu-btn" onclick="showSection('components')">UI-Komponenten</button>
+      <button id="nav-animation" class="menu-btn" onclick="showSection('animation')">Interaktion & Bewegung</button>
+
+      <div class="menu-category" id="cat-resources">Ressourcen</div>
+      <button id="nav-downloads" class="menu-btn" onclick="showSection('downloads')">Downloads & Vorlagen</button>
+    </nav>
+  </aside>
+
+  <main class="content-stage">
 
     <section id="sec-philosophy" class="content-section active">
-      <div class="hero">
-        <h2>Professionalität & Überzeugung</h2>
-        <p>Wir sind keine Möchtegern-Experten. Wir sind Flux Design – das medientechnische Kompetenzzentrum für High-End Web-Erlebnisse.</p>
+      <div class="section-hero">
+        <span class="meta-title">01 / Unternehmenskultur</span>
+        <h2>Nett, aber absolut überzeugt von unserem Können</h2>
+        <p class="lead">Wir sind eine hochpreisige Web-Agentur. Wir überzeugen Kunden durch meisterhaftes medientechnisches Können und kompromisslose Ästhetik.</p>
       </div>
-
       <div class="card">
         <h3>Das "Professionelle Du"</h3>
-        <p>Wir duzen uns intern und partnerbasiert mit Kunden. Es ist ein Du der Augenhöhe – respektvoll, warm und unerschütterlich kompetent.</p>
+        <p>Wir kommunizieren sowohl intern als auch mit unseren Premium-Kunden auf Augenhöhe. Unsere Ansprache ist warm, respektvoll, verbindlich und absolut stilsicher.</p>
       </div>
-
       <div class="card accent">
-        <h3>Premium-Anspruch</h3>
-        <p>Qualität hat ihren Preis. Wir rechtfertigen unsere Kosten nicht durch Ausreden, sondern durch messbare Exzellenz in Performance und Design.</p>
+        <h3>Unser Premium-Anspruch</h3>
+        <p>Maßgeschneiderte Webseiten sind eine teure Investition. Wir rechtfertigen unsere Preise durch messbare Exzellenz in Performance, Sicherheit und Design. Jedes Projekt demonstriert unsere Begabung.</p>
       </div>
     </section>
 
-    <section id="sec-rules" class="content-section">
-      <h2>Visuelle Identität</h2>
-      <p>Unsere Marke ist schlicht, technisch brillant und konsequent.</p>
-
-      <div class="color-palette">
-        <div class="swatch onyx">#0D0D0D<br>Deep Onyx</div>
-        <div class="swatch white">#FFFFFF<br>Pure White</div>
-        <div class="swatch cyber">#00E5FF<br>Cyber Blue</div>
+    <section id="sec-communication" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">02 / Interaktion</span>
+        <h2>Kundenkontakt & Deeskalation</h2>
+        <p class="lead">Detaillierte Verhaltensleitfäden für den professionellen Arbeitsalltag.</p>
       </div>
 
-      <div class="card">
-        <h3>Interne Hausschrift</h3>
-        <p>Wir nutzen ausschließlich <strong>Plus Jakarta Sans</strong>. Sie verkörpert Präzision und Modernität.</p>
-      </div>
-
-      <div class="card-grid">
-        <div class="card do">
-          <h4>✅ Logo Do's</h4>
-          <ul>
-            <li>Immer auf Onyx oder Weiß platzieren.</li>
-            <li>Schutzraum von Breite 'X' einhalten.</li>
-            <li>Responsive Logo-Varianten nutzen.</li>
-          </ul>
+      <div class="role-specific" data-role="sekretariat leitung">
+        <div class="card">
+          <h3>📞 Telefon-Leitfaden & Erstkontakt</h3>
+          <p>Der erste Eindruck entscheidet. Am Telefon treten wir herzlich, ruhig und extrem professionell auf:</p>
+          <p class="quote">"Flux Design, Kompetenzzentrum für Webtechnologie. Sie sprechen mit [Name]. Was können wir heute für Ihr digitales Anliegen tun?"</p>
+          <p style="margin-top: 15px;"><strong>Weiterleitung bei Problemen oder Beschwerden:</strong> Sagen Sie niemals „Da kenne ich mich nicht aus“ oder „Der Kollege ist schuld“. Nutzen Sie stattdessen folgende Deeskalations-Formel:</p>
+          <p class="quote">"Um Ihnen für diese spezifische technische Fragestellung sofort die präziseste Lösung zu bieten, übergebe ich Sie direkt an unsere Projektleitung, Herrn/Frau [Name]. Eventuelle Wartezeiten entfallen."</p>
         </div>
-        <div class="card dont">
-          <h4>❌ Logo Dont's</h4>
+      </div>
+
+      <div class="role-specific" data-role="social">
+        <div class="card">
+          <h3>📱 Social Media Tonalität (Tone of Voice)</h3>
+          <p>Unsere Kanäle repräsentieren Spitzenklasse. Wir posten keine Trends, sondern teilen fundierte Insights.</p>
           <ul>
-            <li>Farben niemals verfremden.</li>
-            <li>Keine Transparenz-Effekte.</li>
-            <li>Niemals in Bilder schneiden.</li>
+            <li><strong>Ansprache:</strong> Das respektvolle, professionelle "Du". Niemals jugendlicher Slang ("Bro", "Mega-Geil" etc.), sondern geschliffenes Deutsch mit präzisen englischen Fachbegriffen ("Responsive Design-Architektur", "High-Performance Code").</li>
+            <li><strong>Haltung:</strong> Stolz auf das Ergebnis, aber dankbar für das Vertrauen des Kunden. Keine arrogante Prahlerei, sondern sachlich bewiesene Begabung.</li>
           </ul>
         </div>
       </div>
-    </section>
 
-    <section id="sec-behavior" class="content-section">
-      <h2>Verhalten & Prozesse</h2>
-
-      <div id="phone-script" class="card role-specific" data-role="sekretariat leitung">
-        <h3>📞 Telefon-Leitfaden</h3>
-        <p><em>"Flux Design, Sie sprechen mit [Name]. Was können wir heute für Ihr digitales Anliegen tun?"</em></p>
-        <p>Bei Beschwerden: *"Um Ihnen die präziseste Lösung zu bieten, übergebe ich Sie an unseren technischen Leiter."*</p>
-      </div>
-
-      <div class="card crisis">
+      <div class="card error-card">
         <h3>🚨 Krisen-Management: Keine Panik!</h3>
-        <p>Wir vertuschen nichts. Bei Verzögerungen kommunizieren wir proaktiv, sachlich und präsentieren sofort zwei alternative Lösungswege.</p>
-      </div>
-
-      <div id="dev-rules" class="card code role-specific" data-role="entwicklung design">
-        <h3>&lt;/&gt; Tech-Standard</h3>
-        <p><strong>Green Computing:</strong> Code so schlank wie möglich. Jedes KB Ladezeit, das wir sparen, ist ein Beweis unseres Können und schont Ressourcen.</p>
+        <p>Wenn ein System Fehler aufweist oder Meilensteine wackeln: **Absolute Ruhe bewahren.** Wir vertuschen intern oder extern niemals Fehler. Die Regel lautet: Wir treten proaktiv an den Kunden heran, erklären die technische Herausforderung sachlich und präsentieren zeitgleich direkt zwei validierte Lösungswege. Wir zeigen uns überzeugt davon, dass wir das Problem lösen.</p>
       </div>
 
       <div class="card">
-        <h3>🔒 Diskretion & Daten</h3>
-        <p>Während des Projekts: Absolute Stille nach außen. Keine Screenshots, keine Namen. Wir schützen das Kapital unserer Kunden.</p>
+        <h3>🔒 Datensicherheit & Diskretion</h3>
+        <p>Da wir eine teure Agentur sind, vertrauen uns Kunden hochsensible Daten an. Während eines laufenden Projekts gilt eine strikte Geheimhaltung: Es werden keine Interna, unfertige Programmzeilen oder Kundennamen preisgegeben. Erst nach dem offiziellen Projektabschluss und mit schriftlicher Freigabe präsentieren wir Ergebnisse stolz auf unseren Social Media Kanälen.</p>
       </div>
     </section>
+
+    <section id="sec-logos" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">03 / Marken-Architektur</span>
+        <h2>Das Logo-Verhaltensraster</h2>
+        <p class="lead">Unser Wellen-Markenzeichen passt sich flexibel an, folgt aber strikten Kernregeln.</p>
+      </div>
+
+      <div class="card slideshow-card">
+        <h3>Interaktive Logo-Anwendung</h3>
+        <p>Klicken Sie durch die Tabs, um die erlaubten Modifikationen des Logos im Raster zu sehen:</p>
+
+        <div class="slideshow-tabs">
+          <button class="slide-tab-btn active" onclick="changeSlide(0)">01. Standard (Azur)</button>
+          <button class="slide-tab-btn" onclick="changeSlide(1)">02. Dark-Mode (Onyx)</button>
+          <button class="slide-tab-btn" onclick="changeSlide(2)">03. Monochrom (Negativ)</button>
+        </div>
+
+        <div class="slide-display" id="logo-slide-bg">
+          <div class="slide-preview-box">
+            <svg id="slide-logo-svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+              <rect id="wave1" x="15" y="20" width="70" height="15" rx="7.5" fill="#115E67"/>
+              <rect id="wave2" x="30" y="42" width="55" height="15" rx="7.5" fill="#115E67" opacity="0.8"/>
+              <rect id="wave3" x="45" y="65" width="40" height="15" rx="7.5" fill="#115E67" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="slide-instruction">
+            <h4 id="slide-title">01. Standard-Anwendung auf hellem Grund</h4>
+            <p id="slide-text">Auf hellen Flächen strahlt das primäre Azurblau (#115E67). Die Deckkraft-Abstufungen der drei Wellenelemente müssen exakt eingehalten werden.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <div class="card border-success">
+          <h4>✅ Erlaubte Anwendung (Do's)</h4>
+          <ul>
+            <li>Der Schutzraum umlaufend in der Höhe des Buchstabens "F" muss zwingend eingehalten werden.</li>
+            <li>Nutzung der offiziellen Varianten für Social Media Profilbilder.</li>
+          </ul>
+        </div>
+        <div class="card border-error">
+          <h4>❌ Strikt Verboten (Dont's)</h4>
+          <ul>
+            <li>Farbverfremdungen außerhalb der Slideshow-Werte sind untersagt.</li>
+            <li>Es darf nicht transparent als Wasserzeichen über unruhige Bildhintergründe gelegt werden.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-typography" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">04 / Design-System</span>
+        <h2>Detaillierte Typografie-Definition</h2>
+        <p class="lead">Hierarchien und Textausrichtungen für ein fehlerfreies Schriftbild.</p>
+      </div>
+      <div class="card">
+        <h3>Interne Hausschrift: Plus Jakarta Sans</h3>
+        <p style="margin-bottom: 25px;">Wir nutzen für alle Webinterfaces ein strikt linksbündiges System. Hier sind die exakten Vorgaben:</p>
+
+        <table class="spec-table">
+          <thead>
+          <tr>
+            <th>Hierarchie-Ebene</th>
+            <th>Größe (px)</th>
+            <th>Stärke (Weight)</th>
+            <th>Ausrichtung</th>
+            <th>Farbe</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><strong>H1 (Hauptüberschrift)</strong></td>
+            <td>38px</td>
+            <td>Fett (700)</td>
+            <td>Linksbündig</td>
+            <td>Azurblau (#115E67)</td>
+          </tr>
+          <tr>
+            <td><strong>H2 (Unterüberschrift)</strong></td>
+            <td>24px</td>
+            <td>Halbfett (600)</td>
+            <td>Linksbündig</td>
+            <td>Muted Slate (#0B1A1E)</td>
+          </tr>
+          <tr>
+            <td><strong>Fließtext (Bodytext)</strong></td>
+            <td>16px</td>
+            <td>Normal (400)</td>
+            <td>Linksbündig (Rauh)</td>
+            <td>Dunkles Schiefer (#1C2833)</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="sec-colors" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">05 / Farbspektrum</span>
+        <h2>Unsere Firmenfarben</h2>
+      </div>
+      <div class="card">
+        <h3>Exakte Definition der Farbwerte</h3>
+        <table class="color-table">
+          <thead>
+          <tr>
+            <th>Farbe</th>
+            <th>Einsatzbereich</th>
+            <th>RGB (Digital)</th>
+            <th>HEX (Webcode)</th>
+            <th>CMYK (Druck)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><span class="dot azur"></span> Azurblau</td>
+            <td>Primärton / Brand-Farbe</td>
+            <td>17, 94, 103</td>
+            <td>#115E67</td>
+            <td>83, 34, 43, 16</td>
+          </tr>
+          <tr>
+            <td><span class="dot offwhite"></span> Off-White</td>
+            <td>App-Hintergrund</td>
+            <td>244, 246, 246</td>
+            <td>#F4F6F6</td>
+            <td>3, 1, 1, 0</td>
+          </tr>
+          <tr>
+            <td><span class="dot slate"></span> Muted Slate</td>
+            <td>Seitenleisten-Hintergrund</td>
+            <td>11, 26, 30</td>
+            <td>#0B1A1E</td>
+            <td>85, 50, 45, 65</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="sec-photography" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">06 / Bildsprache</span>
+        <h2>Richtlinien für Fotografie & Medien</h2>
+        <p class="lead">Präziser Beschnitt und Bildkomposition für unbemerktes Premium-Marketing.</p>
+      </div>
+      <div class="card">
+        <h3>Ästhetik & Bildkomposition</h3>
+        <ul>
+          <li><strong>Authentizität vor Perfektion:</strong> Wir zeigen echte Einblicke aus unserem Arbeitsalltag. Keine künstlichen Stock-Bilder.</li>
+          <li><strong>Asymmetrischer Fokus:</strong> Hauptmotive liegen gezielt im linken oder rechten Drittel des Bildes. Das lässt im Webinterface ausreichend Platz für Text-Overlays.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="sec-grid" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">07 / Rastermaße</span>
+        <h2>Das 2x Grid-System</h2>
+      </div>
+      <div class="card">
+        <h3>Symmetrie und Layout-Raster</h3>
+        <p>Alle Abstände (Paddings, Margins) und Elementbreiten basieren auf dem mathematischen Prinzip der Verdopplung, ausgehend von einer 8px-Basis (8, 16, 32, 64, 128px).</p>
+      </div>
+    </section>
+
+    <section id="sec-components" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">08 / Benutzeroberfläche</span>
+        <h2>Interaktive UI-Komponenten</h2>
+      </div>
+      <div class="card">
+        <h3>Vorschau von Elementen</h3>
+        <p>Testen Sie hier die Interaktion unserer Buttons. Hover- und Klick-Animationen spiegeln das medientechnische Niveau unserer Agentur wider.</p>
+        <button class="flux-btn">Interaktiver Button</button>
+      </div>
+    </section>
+
+    <section id="sec-animation" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">09 / Bewegung</span>
+        <h2>Kinetische Prinzipien</h2>
+      </div>
+      <div class="card">
+        <h3>Flüssige Übergänge (Flux Motion)</h3>
+        <p>Bewegungen im Web sind niemals abrupt. Alle Interaktionen und Seitenwechsel auf unseren Plattformen nutzen eine sanfte Beschleunigung. Animationen dauern exakt <strong>300ms</strong> und verwenden den standardisierten Zeitverlauf: <code>cubic-bezier(0.4, 0, 0.2, 1)</code>.</p>
+      </div>
+    </section>
+
+    <section id="sec-downloads" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">10 / Ressourcen</span>
+        <h2>Downloads & Marken-Assets</h2>
+      </div>
+      <div class="card">
+        <div class="grid-2col">
+          <div class="download-box">Vektor-Logo Paket (.SVG)</div>
+          <div class="download-box">Schriftart Paket (.TTF)</div>
+        </div>
+      </div>
+    </section>
+
   </main>
 </div>
 
@@ -143,21 +355,51 @@
     setTimeout(() => {
       document.getElementById('selection-screen').style.display = 'none';
       document.getElementById('app-interface').classList.remove('hidden');
-      updateRoleView();
-    }, 500);
+
+      filterSidebarNavigation(); // Blendet irrelevante Menüpunkte komplett aus
+      updateRoleView();          // Aktualisiert den Text-Badge
+
+      // Leitet die Rolle sofort auf ihre wichtigste Startseite weiter
+      if (role === 'entwicklung') showSection('grid');
+      else if (role === 'sekretariat') showSection('communication');
+      else showSection('philosophy');
+    }, 400);
+  }
+
+  function filterSidebarNavigation() {
+    // Definiert haargenau, wer welche Menüpunkte sehen darf
+    const accessMap = {
+      'sekretariat': ['philosophy', 'communication', 'downloads'],
+      'leitung':     ['philosophy', 'communication', 'logos', 'downloads'],
+      'design':      ['philosophy', 'communication', 'logos', 'typography', 'colors', 'photography', 'grid', 'components', 'animation', 'downloads'],
+      'entwicklung': ['philosophy', 'communication', 'typography', 'colors', 'grid', 'components', 'animation', 'downloads'],
+      'social':      ['philosophy', 'communication', 'logos', 'typography', 'colors', 'photography', 'downloads']
+    };
+
+    const allowedSections = accessMap[currentRole];
+
+    // 1. Navigation-Buttons filtern
+    document.querySelectorAll('.menu-btn').forEach(btn => {
+      const sectionId = btn.id.replace('nav-', '');
+      btn.style.display = allowedSections.includes(sectionId) ? 'block' : 'none';
+    });
+
+    // 2. Menü-Kategorien (Überschriften in der Sidebar) filtern, falls alle Unterpunkte leer sind
+    document.getElementById('cat-visual').style.display = (currentRole === 'sekretariat') ? 'none' : 'block';
+    document.getElementById('cat-tech').style.display = ['sekretariat', 'leitung', 'social'].includes(currentRole) ? 'none' : 'block';
   }
 
   function updateRoleView() {
     const roleNames = {
       'sekretariat': 'Sekretariat / Office',
       'leitung': 'Geschäftsführung',
-      'design': 'UI/UX Design',
+      'design': 'UI/UX Design & Brand',
       'entwicklung': 'Web-Entwicklung',
-      'social': 'Social Media Management'
+      'social': 'Social Media & PR'
     };
-    document.getElementById('role-tag').innerText = "Abteilung: " + roleNames[currentRole];
+    document.getElementById('role-tag').innerText = "Bereich: " + roleNames[currentRole];
 
-    // Filtert Inhalte, die für die Rolle spezifisch sind
+    // Filtert spezifische Karteninhalte innerhalb einer geöffneten Seite
     document.querySelectorAll('.role-specific').forEach(el => {
       const allowedRoles = el.getAttribute('data-role').split(' ');
       el.style.display = allowedRoles.includes(currentRole) ? 'block' : 'none';
@@ -166,11 +408,41 @@
 
   function showSection(id) {
     document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.menu button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
 
     document.getElementById('sec-' + id).classList.add('active');
     document.getElementById('nav-' + id).classList.add('active');
-    window.scrollTo(0,0);
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function changeSlide(index) {
+    const bg = document.getElementById('logo-slide-bg');
+    const w1 = document.getElementById('wave1');
+    const w2 = document.getElementById('wave2');
+    const w3 = document.getElementById('wave3');
+    const title = document.getElementById('slide-title');
+    const text = document.getElementById('slide-text');
+
+    document.querySelectorAll('.slide-tab-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', i === index);
+    });
+
+    if (index === 0) {
+      bg.style.backgroundColor = '#F4F6F6';
+      w1.setAttribute('fill', '#115E67'); w2.setAttribute('fill', '#115E67'); w3.setAttribute('fill', '#115E67');
+      title.innerText = "01. Standard-Anwendung auf hellem Grund";
+      text.innerText = "Auf hellen Flächen strahlt das primäre Azurblau (#115E67). Die Deckkraft-Abstufungen der drei Wellenelemente müssen exakt eingehalten werden.";
+    } else if (index === 1) {
+      bg.style.backgroundColor = '#0B1A1E';
+      w1.setAttribute('fill', '#00E5FF'); w2.setAttribute('fill', '#00E5FF'); w3.setAttribute('fill', '#00E5FF');
+      title.innerText = "02. Dark-Mode Anwendung für Code-Interfaces";
+      text.innerText = "Im internen Code-Editor wechselt die Umgebung auf Muted Slate. Das Logo leuchtet hier in einer hochpräzisen, neon-blauen Kontrastvariante.";
+    } else if (index === 2) {
+      bg.style.backgroundColor = '#115E67';
+      w1.setAttribute('fill', '#FFFFFF'); w2.setAttribute('fill', '#FFFFFF'); w3.setAttribute('fill', '#FFFFFF');
+      title.innerText = "03. Monochrome Negativ-Variante";
+      text.innerText = "Bei Briefstempeln oder vollfarbigen Hintergründen wird das Logo reinweiß ausgespart. Die Opazitäten (Deckkraft) bleiben unberührt.";
+    }
   }
 </script>
 </body>

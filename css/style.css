@@ -1,13 +1,16 @@
 :root {
   --azur: #115E67;
+  --color-azur: #115E67; /* Backup entry for script integration */
   --offwhite: #F4F6F6;
   --white: #FFFFFF;
   --slate: #0B1A1E;
+  --color-slate: #0B1A1E; /* Backup entry for script integration */
   --text-dark: #1C2833;
   --text-muted: #7F8C8D;
   --error: #FF3B30;
   --success: #34C759;
   --font-base: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Bebas Neue', sans-serif;
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -24,7 +27,7 @@ body { background-color: var(--offwhite); color: var(--text-dark); font-family: 
 .brand-logo-svg { margin-bottom: 20px; animation: pulseGlow 3s infinite ease-in-out; }
 .fade-out { opacity: 0; pointer-events: none; }
 .intro-container { text-align: center; padding: 20px; max-width: 800px; }
-.logo-branding { font-size: 36px; font-weight: 800; letter-spacing: 6px; margin-bottom: 10px; color: var(--white); }
+.logo-branding {font-family: var(--font-display); font-size: 42px; font-weight: 400;letter-spacing: 4px; margin-bottom: 10px;color: var(--white);text-transform: uppercase;}
 .logo-branding span { color: var(--azur); }
 .intro-container p { color: var(--text-muted); margin-bottom: 40px; font-size: 15px; }
 
@@ -43,7 +46,37 @@ body { background-color: var(--offwhite); color: var(--text-dark); font-family: 
 /* SIDEBAR LAYOUT (DUNKLES SCHIEFER) */
 .app-container { display: flex; width: 100vw; height: 100vh; }
 .sidebar { width: 270px; background-color: var(--slate); border-right: 1px solid #142327; display: flex; flex-direction: column; height: 100vh; position: fixed; color: var(--white); }
-.sidebar-header { padding: 24px; font-weight: 800; letter-spacing: 3px; font-size: 20px; border-bottom: 1px solid #142327; cursor: pointer; }
+.sidebar-header {
+  font-family: var(--font-display); /* Nutzt Bebas Neue */
+  font-size: 28px; /* Leicht erhöht, damit das Größenverhältnis zum Icon stimmt */
+  font-weight: 400;
+  letter-spacing: 2px;
+  padding: 24px;
+  border-bottom: 1px solid #142327;
+  cursor: pointer;
+
+  /* Flexbox-Zentrierung */
+  display: flex;
+  align-items: center; /* Zwingt alles auf die mathematische Mitte */
+  gap: -60px; /* Perfekt ausbalancierter horizontaler Abstand */
+  line-height: 1; /* Verhindert, dass die Schriftart unsichtbaren Raum nach unten erzeugt */
+}
+
+/* Feinjustierung für das PNG-Logo innerhalb des Headers */
+.sidebar-header img {
+  display: block;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin: 0;
+
+  /* Optischer Ausgleich: Schiebt das Logo um 2 Pixel nach unten,
+     um den visuellen Überhang der Bebas Neue perfekt auszugleichen */
+  transform: translateY(1px);
+}
+
+
 .sidebar-header span { color: var(--azur); }
 .user-badge-container { padding: 16px 24px 8px; }
 .badge { background-color: rgba(17, 94, 103, 0.2); color: #00E5FF; border: 1px solid var(--azur); padding: 4px 12px; font-size: 11px; font-weight: 700; border-radius: 4px; text-transform: uppercase; }
@@ -60,7 +93,7 @@ body { background-color: var(--offwhite); color: var(--text-dark); font-family: 
 .content-section.active { display: block; animation: sectionFade 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 .section-hero { margin-bottom: 48px; }
 .meta-title { font-size: 12px; font-weight: 700; color: var(--azur); text-transform: uppercase; letter-spacing: 2px; }
-.section-hero h2 { font-size: 38px; font-weight: 800; margin: 8px 0 16px; letter-spacing: -0.5px; color: var(--slate); }
+.section-hero h2 {font-family: var(--font-display);font-size: 46px;font-weight: 400;margin: 8px 0 16px;letter-spacing: 1px;color: var(--slate);text-transform: uppercase;}
 .lead { font-size: 18px; color: var(--text-dark); opacity: 0.8; font-weight: 400; max-width: 700px; }
 
 /* WEISSE PREMIUM-KARTEN */
@@ -102,6 +135,12 @@ body { background-color: var(--offwhite); color: var(--text-dark); font-family: 
 .download-box { background-color: var(--white); border: 1px solid #E5E8E8; padding: 20px; text-align: center; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.01); }
 .download-box:hover { border-color: var(--azur); color: var(--azur); transform: translateY(-2px); }
 
+.guideline-matrix { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 12px; }
+.matrix-box { padding: 20px; border-radius: 6px; }
+.matrix-box.do { background: rgba(52, 199, 89, 0.08); border-left: 4px solid var(--success); }
+.matrix-box.dont { background: rgba(255, 59, 48, 0.08); border-left: 4px solid var(--error); }
+.matrix-box h4 { margin-top: 0; font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+
 @keyframes sectionFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes pulseGlow { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(17,94,103,0.3)); } 50% { transform: scale(1.03); filter: drop-shadow(0 0 20px rgba(17,94,103,0.7)); } }
 
@@ -117,4 +156,75 @@ body { background-color: var(--offwhite); color: var(--text-dark); font-family: 
   .grid-2col { grid-template-columns: 1fr; }
   .role-grid { grid-template-columns: repeat(2, 1fr); }
   .slide-display { flex-direction: column; text-align: center; }
+  .guideline-matrix { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   PRINT STYLES (Sichert das saubere Rendering des vollständigen PDF-Handbuchs)
+   ========================================================================== */
+@media print {
+  /* 1. Verstecke Navigation, Startbildschirm und UI-Elemente, die nicht aufs Papier gehören */
+  #selection-screen, .sidebar, .slideshow-tabs, .user-badge-container, button.flux-btn, .download-box {
+    display: none !important;
+  }
+
+
+  /* 2. ERZWINGE VOLLE LÄNGE (Hebt den Abschneide-Fehler bei Scrollboxen auf) */
+  html, body, .app-container, .content-stage, main {
+    background: #FFFFFF !important;
+    color: #0B1A1E !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;        /* Erlaubt unendliche Länge nach unten */
+    overflow: visible !important;    /* Schaltet Scrollboxen für das Papier ab */
+    overflow-y: visible !important;  /* Verhindert das Abschneiden nach Seite 1 */
+    display: block !important;       /* Löst Flexbox-Starrheit beim Drucken auf */
+    position: relative !important;
+    box-shadow: none !important;
+  }
+
+  /* 3. Jede Sektion zwingend anzeigen und sauber untereinander anordnen */
+  .content-section {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    page-break-after: always !important; /* Jedes Hauptkapitel beginnt auf einer neuen PDF-Seite */
+    margin-bottom: 30px !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* 4. Karten-Formatierung für Papier optimieren (Keine dunklen Klötze) */
+  .card {
+    background: #FFFFFF !important;
+    border: 1px solid #E5E8E8 !important;
+    color: #0B1A1E !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important; /* Verhindert, dass eine Karte mitten im Satz zerschnitten wird */
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* 5. Tabellen-Strukturen fixieren */
+  .spec-table, .color-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: avoid !important;
+  }
+
+  .spec-table th, .spec-table td {
+    border: 1px solid #BDC3C7 !important;
+    padding: 8px !important;
+    color: #0B1A1E !important;
+  }
+
+  /* 6. Textkorrekturen für den Druck */
+  h1, h2, h3, h4 {
+    color: #115E67 !important;
+    page-break-after: avoid !important;
+  }
+  .print-only-slides {
+    display: block !important; /* Macht alle Logo-Varianten im PDF sichtbar! */
+  }
 }

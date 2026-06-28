@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flux Design | Internes Markenportal</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux Design | Internes Markenportal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
 <body>
 
+<!-- PORTAL-AUSWAHL (STARTBILDCHIRM) -->
 <div id="selection-screen" class="overlay">
   <div class="intro-container">
-    <div class="brand-logo-svg">
-      <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="15" y="20" width="70" height="15" rx="7.5" fill="#115E67"/>
-        <rect x="30" y="42" width="55" height="15" rx="7.5" fill="#115E67" opacity="0.8"/>
-        <rect x="45" y="65" width="40" height="15" rx="7.5" fill="#115E67" opacity="0.5"/>
-      </svg>
+
+    <div class="brand-logo-svg" style="width: 250px; height: 250px; margin: 0 auto 0px; display: flex; justify-content: center; align-items: center;">
+      <img src="FD2.png" alt="Flux Design Logo" style="width: 100%; height: 100%; object-fit: contain;">
     </div>
-    <div class="logo-branding">FLUX<span>DESIGN</span></div>
+    <div class="logo-branding" style="margin-top: -55px; margin-bottom: 25px;">FLUXDESIGN</div>
+
     <h1>Interne Markenidentität</h1>
-    <p>Wählen Sie Ihre Abteilung für personalisierte Handlungsleitfäden und Design-Assets:</p>
+    <p>Wählen Sie Ihre Abteilung oder den unbeschränkten Master-Styleguide:</p>
+
+    <!-- LOGO oben -->
 
     <div class="role-grid">
-      <div class="role-item" onclick="initApp('sekretariat')">
-        <div class="avatar"><span>📞</span></div>
-        <p>Sekretariat / Office</p>
+      <!-- Der "Allgemeine Styleguide" Button: Schaltet ALLE Sektionen frei -->
+      <div class="role-item" onclick="initApp('allgemein')">
+        <div class="avatar"><span>🌍</span></div>
+        <p>Allgemeiner Styleguide</p>
       </div>
       <div class="role-item" onclick="initApp('leitung')">
         <div class="avatar"><span>💼</span></div>
@@ -49,296 +51,1366 @@
   </div>
 </div>
 
+<!-- HAUPT-INTERFACE -->
 <div id="app-interface" class="app-container hidden">
 
+  <!-- SEITENLEISTE NAVIGATION -->
+
+
   <aside class="sidebar">
-    <div class="sidebar-header" onclick="location.reload()">
-      <svg width="24" height="24" viewBox="0 0 100 100" fill="none" style="vertical-align: middle; margin-right: 10px;">
-        <rect x="15" y="20" width="70" height="15" rx="7.5" fill="#115E67"/>
-        <rect x="30" y="42" width="55" height="15" rx="7.5" fill="#115E67" opacity="0.8"/>
-        <rect x="45" y="65" width="40" height="15" rx="7.5" fill="#115E67" opacity="0.5"/>
-      </svg>FLUX<span>DESIGN</span>
+    <div class="sidebar-header" onclick="location.reload()" style="display: flex; align-items: center; padding: 20px 24px;">
+      <img src="FD2F.png" alt="Flux Design" style="width: 60px; height: 60px; object-fit: contain; margin-right: 8px;">FLUXDESIGN
     </div>
+
     <div class="user-badge-container">
       <span id="role-tag" class="badge">Abteilung</span>
     </div>
     <nav class="sidebar-menu">
       <div class="menu-category" id="cat-culture">Philosophie & Kultur</div>
-      <button id="nav-philosophy" class="menu-btn active" onclick="showSection('philosophy')">Grundwerte</button>
-      <button id="nav-communication" class="menu-btn" onclick="showSection('communication')">Kommunikation & Leitfäden</button>
+      <button id="nav-philosophy" class="menu-btn active" onclick="showSection('philosophy')">Grundwerte (Ethos)</button>
+      <button id="nav-communication" class="menu-btn" onclick="showSection('communication')">Kundenkontakt & Deeskalation</button>
+      <button id="nav-mgt-vision" class="menu-btn" onclick="showSection('mgt-vision')">Mgt: Marken-Vision</button>
+      <button id="nav-mgt-legal" class="menu-btn" onclick="showSection('mgt-legal')">Mgt: Markenschutz</button>
+      <button id="nav-mgt-governance" class="menu-btn" onclick="showSection('mgt-governance')">Mgt: Quality Governance</button>
 
       <div class="menu-category" id="cat-visual">Visuelle Identität</div>
       <button id="nav-logos" class="menu-btn" onclick="showSection('logos')">Logo-Architektur</button>
       <button id="nav-typography" class="menu-btn" onclick="showSection('typography')">Typografie-Regeln</button>
       <button id="nav-colors" class="menu-btn" onclick="showSection('colors')">Farbsystem (Screen/Print)</button>
       <button id="nav-photography" class="menu-btn" onclick="showSection('photography')">Bildsprache & Fotos</button>
+      <!-- EXKLUSIVE DESIGNER-BUTTONS -->
+      <button id="nav-design-tonality" class="menu-btn" onclick="showSection('design-tonality')">🎨 Design: UX-Writing</button>
+      <button id="nav-design-tokens" class="menu-btn" onclick="showSection('design-tokens')">🎨 Design: Design Tokens</button>
+      <button id="nav-design-a11y" class="menu-btn" onclick="showSection('design-a11y')">🎨 Design: Accessibility</button>
 
       <div class="menu-category" id="cat-tech">Komponenten & Tech</div>
-      <button id="nav-grid" class="menu-btn" onclick="showSection('grid')">2x Grid-System</button>
-      <button id="nav-components" class="menu-btn" onclick="showSection('components')">UI-Komponenten</button>
+      <button id="nav-grid" class="menu-btn" onclick="showSection('grid')">2x Grid-System (Layout)</button>
+      <button id="nav-components" class="menu-btn" onclick="showSection('components')">UI- & Icon-System</button>
+      <button id="nav-compliance" class="menu-btn" onclick="showSection('compliance')">Datenschutz & Compliance</button>
       <button id="nav-animation" class="menu-btn" onclick="showSection('animation')">Interaktion & Bewegung</button>
+      <button id="nav-dev-architecture" class="menu-btn" onclick="showSection('dev-architecture')">&lt;/&gt; Dev: Code-Architektur</button>
+      <button id="nav-dev-performance" class="menu-btn" onclick="showSection('dev-performance')">&lt;/&gt; Dev: Performance Budgets</button>
+      <button id="nav-dev-css" class="menu-btn" onclick="showSection('dev-css')">&lt;/&gt; Dev: CSS Token Engine</button>
+      <button id="nav-social-feed" class="menu-btn" onclick="showSection('social-feed')">📱 Social: Feed-Ästhetik</button>
+      <button id="nav-social-video" class="menu-btn" onclick="showSection('social-video')">📱 Social: Video & Motion</button>
+      <button id="nav-social-pr" class="menu-btn" onclick="showSection('social-pr')">📱 PR: Medien-Assets</button>
 
       <div class="menu-category" id="cat-resources">Ressourcen</div>
       <button id="nav-downloads" class="menu-btn" onclick="showSection('downloads')">Downloads & Vorlagen</button>
     </nav>
   </aside>
 
+  <!-- HAUPTINHALT STAGE -->
   <main class="content-stage">
 
+
+
+    <!-- Sektion 01: GRUNDWERTE & CORE IDENTITY -->
     <section id="sec-philosophy" class="content-section active">
       <div class="section-hero">
-        <span class="meta-title">01 / Unternehmenskultur</span>
-        <h2>Nett, aber absolut überzeugt von unserem Können</h2>
-        <p class="lead">Wir sind eine hochpreisige Web-Agentur. Wir überzeugen Kunden durch meisterhaftes medientechnisches Können und kompromisslose Ästhetik.</p>
+        <span class="meta-title">01 / System-Philosophie</span>
+        <h2>Unsere Haltung & Design-Ethos</h2>
+        <p class="lead">Die Leitlinien und Praktiken von Flux Design steuern und formen jede interaktive Erfahrung, die wir erschaffen.</p>
       </div>
+
       <div class="card">
-        <h3>Das "Professionelle Du"</h3>
-        <p>Wir kommunizieren sowohl intern als auch mit unseren Premium-Kunden auf Augenhöhe. Unsere Ansprache ist warm, respektvoll, verbindlich und absolut stilsicher.</p>
+        <h3>Aesthetic is Code</h3>
+        <p>Wir glauben an den technologischen Fortschritt – daran, dass die gezielte Anwendung von digitaler Intelligenz, Logik und sauberer Medientechnik das Geschäft unserer Kunden transformieren kann. Bei unserer Skalierung und unserem hochpreisigen Anspruch ist „gutes Design“ kein visuelles Extra, sondern eine tiefere Verantwortung gegenüber den Benutzerschnittstellen, die wir entwickeln.</p>
+        <p class="quote">"Ohne Ästhetik ist Design entweder die stumpfe Wiederholung vertrauter Klischees oder ein wildes Suchen nach Neuheit. Ohne Ästhetik ist der Computer nur eine geistlose Hochgeschwindigkeitsmaschine." – Frei nach Paul Rand</p>
       </div>
+
       <div class="card accent">
-        <h3>Unser Premium-Anspruch</h3>
-        <p>Maßgeschneiderte Webseiten sind eine teure Investition. Wir rechtfertigen unsere Preise durch messbare Exzellenz in Performance, Sicherheit und Design. Jedes Projekt demonstriert unsere Begabung.</p>
+        <h3>Design ist, wie wir Bindungen aufbauen</h3>
+        <p>Heute sind die Werkzeuge der Web-Entwicklung für jeden im Netz frei zugänglich. Paradoxerweise führt das dazu, dass digitale Erlebnisse immer austauschbarer werden. Der unerbittliche Druck, Code schnell zu verbinden, erzeugt oft einen ungleichen Fokus auf Unmittelbarkeit statt auf echte, technologische Innovation.</p>
+        <p>Genau hier setzt Flux Design an: Jedes Interface muss eine spürbare, unverwechselbare Präzision transportieren. Ein Nebenprodukt jeder Interaktion mit Systemen von Flux Design muss <strong>Zeit</strong> sein – gewonnene Zeit durch Performance, Klarheit und fehlerfreie User Flows.</p>
       </div>
     </section>
 
+    <section id="sec-management" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">02 / Brand Governance</span>
+        <h2>Geschäftsführung &amp; Markenstrategie</h2>
+        <p class="lead">Dieses Kapitel definiert die strategischen Leitlinien zur Steuerung und Wahrung der Markenidentität von Flux Design. Es dient dem Management als Kontrollwerkzeug für den globalen Markenauftritt.</p>
+      </div>
+
+      <div class="card accent">
+        <h3>1. Unsere Marken-Vision: Aesthetic is Code</h3>
+        <p>Die visuelle Identität von Flux Design ist eines unserer wertvollsten Unternehmens-Assets. Die Geschäftsführung überwacht, dass jedes Produkt, jede Kampagne und jeder öffentliche Auftritt unsere Kernwerte widerspiegelt: <strong>Präzision, medientechnische Perfektion und radikalen Minimalismus</strong>. Das Design-System ist nicht flexibel verhandelbar, sondern das visuelle Gesetz der Agentur.</p>
+      </div>
+
+      <div class="card">
+        <h3>2. Corporate Identity &amp; Rechtlicher Markenschutz</h3>
+        <p>Um die Exklusivität von Flux Design zu sichern, gelten für die Verwendung unserer geschützten Bild- und Wortmarken strikte rechtliche Vorgaben, deren Einhaltung das Management bei jedem Vertrag und jedem Partner-Auftritt prüft:</p>
+
+        <table class="spec-table" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <thead>
+          <tr style="background: rgba(0,0,0,0.02);">
+            <th>Schutzelement</th>
+            <th>Vorgabe für Partner &amp; Presse</th>
+            <th>Rechtlicher Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><strong>Die Bildmarke (Das "P"-Logo)</strong></td>
+            <td>Darf niemals ohne den Schriftzug FLUX DESIGN für Co-Branding genutzt werden, es sei denn, die Geschäftsführung erteilt eine schriftliche Sondergenehmigung.</td>
+            <td>Eingetragenes Geschmacksmuster ®</td>
+          </tr>
+          <tr>
+            <td><strong>Der Markenname</strong></td>
+            <td>Wird in offiziellen Dokumenten, Pressemitteilungen und Verträgen immer in Versalien und ohne Leerzeichen geschrieben: <code>FLUX DESIGN</code>.</td>
+            <td>Geschützte Wortmarke ™</td>
+          </tr>
+          <tr>
+            <td><strong>Sub-Brands / Abteilungen</strong></td>
+            <td>Die Benennung neuer interner Tools, Frameworks oder Units muss der Nomenklatur dieses Styleguides folgen (z. B. <i>Flux Core</i>, <i>Flux Kinetics</i>).</td>
+            <td>Interne Konzern-Richtlinie</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>3. Brand Governance: Freigabeprozesse bei Abweichungen</h3>
+        <p>Ein lebendiges Design-System entwickelt sich weiter. Dennoch dürfen Core-Elemente (wie die Hausschriften <i>Bebas Neue</i> und <i>Plus Jakarta Sans</i> oder die Primärfarbe <i>Azur</i>) nicht eigenmächtig verändert werden. Bei außergewöhnlichen Projektanforderungen greift das formelle Freigabe-Protokoll:</p>
+
+        <div class="guideline-matrix" style="margin-top: 15px;">
+          <div class="matrix-box do">
+            <h4>✓ Erlaubter Workflow bei Anpassungen</h4>
+            <ul>
+              <li>Einreichung eines „Design System Change Requests“ durch das Design-Team bei permanenten Optimierungen.</li>
+              <li>Prüfung der medientechnischen Machbarkeit und Barrierefreiheit durch das Dev-Team, bevor die Geschäftsführung das finale Zeichen gibt.</li>
+            </ul>
+          </div>
+          <div class="matrix-box dont">
+            <h4>✗ Unzulässige Ausnahmen (Sanktioniert)</h4>
+            <ul>
+              <li>Eigenmächtiges Verfremden des Logos oder das Nutzen von Fremdfarben für länderspezifische Sub-Seiten („Wildwuchs“).</li>
+              <li>Übergehen des Styleguides bei zeitkritischen Express-Projekten. Zeitmangel entbindet niemals von Marken-Compliance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sektion 02: KUNDENKONTAKT & DEESKALATION -->
     <section id="sec-communication" class="content-section">
       <div class="section-hero">
-        <span class="meta-title">02 / Interaktion</span>
+        <span class="meta-title">02 / Interaktions-Codex</span>
         <h2>Kundenkontakt & Deeskalation</h2>
-        <p class="lead">Detaillierte Verhaltensleitfäden für den professionellen Arbeitsalltag.</p>
+        <p class="lead">Unser Leitfaden für verbale, schriftliche und krisenbezogene Kommunikation. Einheitliche Prinzipien sichern unseren Premium-Anspruch in jeder Situation.</p>
       </div>
 
-      <div class="role-specific" data-role="sekretariat leitung">
-        <div class="card">
-          <h3>📞 Telefon-Leitfaden & Erstkontakt</h3>
-          <p>Der erste Eindruck entscheidet. Am Telefon treten wir herzlich, ruhig und extrem professionell auf:</p>
-          <p class="quote">"Flux Design, Kompetenzzentrum für Webtechnologie. Sie sprechen mit [Name]. Was können wir heute für Ihr digitales Anliegen tun?"</p>
-          <p style="margin-top: 15px;"><strong>Weiterleitung bei Problemen oder Beschwerden:</strong> Sagen Sie niemals „Da kenne ich mich nicht aus“ oder „Der Kollege ist schuld“. Nutzen Sie stattdessen folgende Deeskalations-Formel:</p>
-          <p class="quote">"Um Ihnen für diese spezifische technische Fragestellung sofort die präziseste Lösung zu bieten, übergebe ich Sie direkt an unsere Projektleitung, Herrn/Frau [Name]. Eventuelle Wartezeiten entfallen."</p>
-        </div>
+      <div class="card">
+        <h3>Die drei Säulen des "Professionellen Du"</h3>
+        <p>Unsere Sprache spiegelt unsere meisterhafte Fachkompetenz wider. Wir sprechen nicht wie Verkäufer, sondern wie beratende Ingenieure und Designer. Das <em>Professionelle Du</em> balanciert Nähe und unumstößliche Autorität:</p>
+        <table class="spec-table">
+          <thead>
+          <tr><th>Säule</th><th>Beschreibung</th><th>Praxis-Beispiel</th></tr>
+          </thead>
+          <tbody>
+          <tr><td><strong>Verbindlichkeit</strong></td><td>Wir nutzen keine vagen Phrasen. Wir nennen präzise Zeiträume und technische Fakten.</td><td><code style="color: var(--azur);">"Ich analysiere die API-Schnittstelle bis heute 16:00 Uhr."</code></td></tr>
+          <tr><td><strong>Respektvolle Nähe</strong></td><td>Das Du baut Barrieren ab, bedeutet aber niemals Kumpelhaftigkeit oder flapsigen Slang.</td><td><code style="color: var(--azur);">"Danke für dein offenes Feedback, wir passen den Sprint an."</code></td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="role-specific" data-role="social">
-        <div class="card">
-          <h3>📱 Social Media Tonalität (Tone of Voice)</h3>
-          <p>Unsere Kanäle repräsentieren Spitzenklasse. Wir posten keine Trends, sondern teilen fundierte Insights.</p>
-          <ul>
-            <li><strong>Ansprache:</strong> Das respektvolle, professionelle "Du". Niemals jugendlicher Slang ("Bro", "Mega-Geil" etc.), sondern geschliffenes Deutsch mit präzisen englischen Fachbegriffen ("Responsive Design-Architektur", "High-Performance Code").</li>
-            <li><strong>Haltung:</strong> Stolz auf das Ergebnis, aber dankbar für das Vertrauen des Kunden. Keine arrogante Prahlerei, sondern sachlich bewiesene Begabung.</li>
-          </ul>
-        </div>
+      <div class="card">
+        <h3>Operative Leitfäden für den Erstkontakt</h3>
+        <p class="quote">"Flux Design, Kompetenzzentrum für Webtechnologie. Du sprichst mit [Name]. Was können wir heute für dein digitales Anliegen tun?"</p>
       </div>
 
       <div class="card error-card">
-        <h3>🚨 Krisen-Management: Keine Panik!</h3>
-        <p>Wenn ein System Fehler aufweist oder Meilensteine wackeln: **Absolute Ruhe bewahren.** Wir vertuschen intern oder extern niemals Fehler. Die Regel lautet: Wir treten proaktiv an den Kunden heran, erklären die technische Herausforderung sachlich und präsentieren zeitgleich direkt zwei validierte Lösungswege. Wir zeigen uns überzeugt davon, dass wir das Problem lösen.</p>
-      </div>
-
-      <div class="card">
-        <h3>🔒 Datensicherheit & Diskretion</h3>
-        <p>Da wir eine teure Agentur sind, vertrauen uns Kunden hochsensible Daten an. Während eines laufenden Projekts gilt eine strikte Geheimhaltung: Es werden keine Interna, unfertige Programmzeilen oder Kundennamen preisgegeben. Erst nach dem offiziellen Projektabschluss und mit schriftlicher Freigabe präsentieren wir Ergebnisse stolz auf unseren Social Media Kanälen.</p>
+        <h3>Krisen-Management & Deeskalations-Matrix</h3>
+        <p>Wenn ein System Fehler aufweist oder ein Kunde emotional reagiert, gilt die oberste Regel: <strong> Absolute Ruhe bewahren. Wir reagieren nicht defensiv, sondern proaktiv.</strong> Wir nennen dem Kunden niemals eine Fehlermeldung, ohne direkt zwei validierte technische Lösungskorridore vorzulegen.</p>
       </div>
     </section>
 
-    <section id="sec-logos" class="content-section">
+
+    <!-- SEKTION 02-A: MARKEN-VISION & DESIGN-PRINZIPIEN -->
+    <section id="sec-mgt-vision" class="content-section">
       <div class="section-hero">
-        <span class="meta-title">03 / Marken-Architektur</span>
-        <h2>Das Logo-Verhaltensraster</h2>
-        <p class="lead">Unser Wellen-Markenzeichen passt sich flexibel an, folgt aber strikten Kernregeln.</p>
+        <span class="meta-title">02-A / Corporate Aesthetics</span>
+        <h2>Marken-Vision &amp; Design-Prinzipien</h2>
+        <p class="lead">Die gestalterische Haltung von Flux Design ist kein verhandelbares Geschmacksthema, sondern ein strategischer Kernwert unseres wirtschaftlichen Erfolgs.</p>
       </div>
 
-      <div class="card slideshow-card">
-        <h3>Interaktive Logo-Anwendung</h3>
-        <p>Klicken Sie durch die Tabs, um die erlaubten Modifikationen des Logos im Raster zu sehen:</p>
-
-        <div class="slideshow-tabs">
-          <button class="slide-tab-btn active" onclick="changeSlide(0)">01. Standard (Azur)</button>
-          <button class="slide-tab-btn" onclick="changeSlide(1)">02. Dark-Mode (Onyx)</button>
-          <button class="slide-tab-btn" onclick="changeSlide(2)">03. Monochrom (Negativ)</button>
-        </div>
-
-        <div class="slide-display" id="logo-slide-bg">
-          <div class="slide-preview-box">
-            <svg id="slide-logo-svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
-              <rect id="wave1" x="15" y="20" width="70" height="15" rx="7.5" fill="#115E67"/>
-              <rect id="wave2" x="30" y="42" width="55" height="15" rx="7.5" fill="#115E67" opacity="0.8"/>
-              <rect id="wave3" x="45" y="65" width="40" height="15" rx="7.5" fill="#115E67" opacity="0.5"/>
-            </svg>
-          </div>
-          <div class="slide-instruction">
-            <h4 id="slide-title">01. Standard-Anwendung auf hellem Grund</h4>
-            <p id="slide-text">Auf hellen Flächen strahlt das primäre Azurblau (#115E67). Die Deckkraft-Abstufungen der drei Wellenelemente müssen exakt eingehalten werden.</p>
-          </div>
-        </div>
+      <div class="card accent">
+        <h3>1. Die ästhetische Grundhaltung: Radikale Reduktion</h3>
+        <p>Unsere visuelle Identität basiert auf dem Prinzip, Komplexität zu zerstören, um Klarheit zu schaffen. Jedes Interface, das unter der Flagge von Flux Design entwickelt wird, muss sich anfühlen wie ein architektonisches Kunstwerk: Geradlinig, funktional und frei von jeglichem dekorativen Ballast.</p>
       </div>
 
-      <div class="grid-2col">
-        <div class="card border-success">
-          <h4>✅ Erlaubte Anwendung (Do's)</h4>
-          <ul>
-            <li>Der Schutzraum umlaufend in der Höhe des Buchstabens "F" muss zwingend eingehalten werden.</li>
-            <li>Nutzung der offiziellen Varianten für Social Media Profilbilder.</li>
-          </ul>
-        </div>
-        <div class="card border-error">
-          <h4>❌ Strikt Verboten (Dont's)</h4>
-          <ul>
-            <li>Farbverfremdungen außerhalb der Slideshow-Werte sind untersagt.</li>
-            <li>Es darf nicht transparent als Wasserzeichen über unruhige Bildhintergründe gelegt werden.</li>
-          </ul>
+      <div class="card">
+        <h3>2. Die drei strategischen Design-Säulen</h3>
+        <div class="guideline-matrix" style="margin-top: 15px;">
+          <div class="matrix-box do" style="background: rgba(17, 94, 103, 0.05); border-left-color: var(--azur);">
+            <h4>Math over Emotion</h4>
+            <p style="font-size: 13px;">Layouts werden auf Basis mathematischer Proportionalität (8px-Raster) entwickelt, nicht nach intuitivem Gutdünken.</p>
+          </div>
+          <div class="matrix-box do" style="background: rgba(17, 94, 103, 0.05); border-left-color: var(--azur);">
+            <h4>Performance is Beauty</h4>
+            <p style="font-size: 13px;">Ein Interface ist nur dann schön, wenn es extrem schnell reagiert. Code-Effizienz steht über visueller Opulenz.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="sec-typography" class="content-section">
+    <!-- SEKTION 02-B: RECHTLICHE ABSICHERUNG DER MARKE -->
+    <section id="sec-mgt-legal" class="content-section">
       <div class="section-hero">
-        <span class="meta-title">04 / Design-System</span>
-        <h2>Detaillierte Typografie-Definition</h2>
-        <p class="lead">Hierarchien und Textausrichtungen für ein fehlerfreies Schriftbild.</p>
+        <span class="meta-title">02-B / Intellectual Property</span>
+        <h2>Rechtliche Absicherung &amp; Markenschutz</h2>
+        <p class="lead">Die Wahrung und Verteidigung unserer eingetragenen Markenwerte sichert die Exklusivität von Flux Design im globalen Agentur-Wettbewerb.</p>
       </div>
-      <div class="card">
-        <h3>Interne Hausschrift: Plus Jakarta Sans</h3>
-        <p style="margin-bottom: 25px;">Wir nutzen für alle Webinterfaces ein strikt linksbündiges System. Hier sind die exakten Vorgaben:</p>
 
-        <table class="spec-table">
+      <div class="card">
+        <h3>1. Nomenklatur &amp; Markenzeichen-Regeln</h3>
+        <p>Die Wortmarke und die Bildmarke sind rechtlich geschützte Assets. Für Veröffentlichungen, Verträge und das Partner-Branding gelten unumstößliche Bedingungen:</p>
+        <table class="spec-table" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
           <thead>
-          <tr>
-            <th>Hierarchie-Ebene</th>
-            <th>Größe (px)</th>
-            <th>Stärke (Weight)</th>
-            <th>Ausrichtung</th>
-            <th>Farbe</th>
+          <tr style="background: rgba(0,0,0,0.02);">
+            <th>Asset-Klasse</th>
+            <th>Rechtlicher Schutzstatus</th>
+            <th>Verbindliche Frontend-Schreibweise</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td><strong>H1 (Hauptüberschrift)</strong></td>
-            <td>38px</td>
-            <td>Fett (700)</td>
-            <td>Linksbündig</td>
-            <td>Azurblau (#115E67)</td>
+            <td><strong>Unternehmensname</strong></td>
+            <td>Eingetragene Wortmarke (™)</td>
+            <td>Immer in Versalien, ohne Leerzeichen: <code>FLUXDESIGN</code></td>
           </tr>
           <tr>
-            <td><strong>H2 (Unterüberschrift)</strong></td>
-            <td>24px</td>
-            <td>Halbfett (600)</td>
-            <td>Linksbündig</td>
-            <td>Muted Slate (#0B1A1E)</td>
+            <td><strong>Das "P"-Monogramm</strong></td>
+            <td>Eingetragenes Geschmacksmuster (®)</td>
+            <td>Darf niemals isoliert ohne Markennamen für Drittplattformen verwendet werden.</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card error-card">
+        <h3>2. Copyright &amp; Asset-Integrität</h3>
+        <p>Jede Veränderung des Logos (Stauchung, Neigung, unautorisierte Farbraum-Wechsel) stellt eine Verletzung der Corporate Identity dar und entbindet das Produkt augenblicklich von der offiziellen Brand-Compliance.</p>
+      </div>
+    </section>
+
+    <!-- SEKTION 02-C: FREIGABE-PROZESSE & QUALITY GOVERNANCE -->
+    <section id="sec-mgt-governance" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">02-C / Quality Gates</span>
+        <h2>Freigabe-Prozesse &amp; Quality Governance</h2>
+        <p class="lead">Regeln für kontrollierte Evolution. Dieses Kapitel dokumentiert, wer wann und unter welchen Bedingungen Abweichungen vom Styleguide freigeben darf.</p>
+      </div>
+
+      <div class="card accent">
+        <h3>1. Das Instanzen-Modell (Wer entscheidet?)</h3>
+        <p>Der Styleguide ist das Gesetz der Agentur. Ausnahmen bei außergewöhnlichen Kunden-Anforderungen durchlaufen eine feste bürokratische Kette:</p>
+        <ul style="margin-top: 10px;">
+          <li><strong>Typografie- &amp; Farbänderungen:</strong> Erfordern die Freigabe des Lead UI/UX Designers sowie ein technisches Audit der Web-Entwicklung bezüglich der WCAG-Barrierefreiheit.</li>
+          <li><strong>Logo-Modifikationen / Co-Branding:</strong> Liegen exklusiv im Entscheidungsbereich der <strong>Geschäftsführung (C-Level)</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>2. Der Compliance-Workflow (Do's &amp; Don'ts)</h3>
+        <div class="guideline-matrix" style="margin-top: 15px;">
+          <div class="matrix-box do">
+            <h4>✓ Der reguläre Änderungspfad</h4>
+            <ul>
+              <li>Einreichung eines Change-Requests im Jira-Board.</li>
+              <li>Dokumentation des neuen Abweichungs-Zustands direkt in diesem Portal.</li>
+            </ul>
+          </div>
+          <div class="matrix-box dont">
+            <h4>✗ Unzulässiger Wildwuchs</h4>
+            <ul>
+              <li>Eigenmächtiges "Ausprobieren" neuer Farben bei zeitkritischen Express-Projekten.</li>
+              <li>Zeitmangel hebelt die Marken-Compliance zu keinem Zeitpunkt aus.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- **Sektion 03 (Logo-Architektur)-->
+
+      <section id="sec-logos" class="content-section">
+        <div class="section-hero">
+          <span class="meta-title">03 / Marken-Architektur</span>
+          <h2>Das geometrische Monogramm</h2>
+          <p class="lead">Unser Markenzeichen vereint die Initialen F und D zu einer reduzierten, architektonischen Bildmarke. Ein präzise kalkulierter Stamm trifft auf einen weit ausschwingenden Bogen.</p>
+        </div>
+
+        <div class="card slideshow-card">
+          <h3>Interaktive Logo-Anwendung</h3>
+          <p>Klicken Sie durch die Systemzustände, um die korrekte Render-Performance und die unzulässigen Farbraum-Modifikationen zu prüfen:</p>
+
+          <div class="slideshow-tabs" style="flex-wrap: wrap; gap: 4px;">
+            <button class="slide-tab-btn active" onclick="changeSlide(0)">01. Standard (Petrol)</button>
+            <button class="slide-tab-btn" onclick="changeSlide(1)">02. Corporate Dark</button>
+            <button class="slide-tab-btn" onclick="changeSlide(2)">03. Monochrom Positiv</button>
+            <button class="slide-tab-btn" onclick="changeSlide(3)">04. Monochrom Negativ</button>
+            <button class="slide-tab-btn" style="border-color: var(--error);" onclick="changeSlide(4)">05. STRIKT UNZULÄSSIG (Don't)</button>
+          </div>
+
+          <div class="slide-display" id="logo-slide-bg" style="background-color: #FFFFFF; padding: 32px; gap: 32px; border-radius: 8px;">
+            <div class="slide-preview-box" style="width: 240px; height: 240px; background: none; border: none; flex-shrink: 0;">
+              <img id="slide-logo-img" src="fd4.jpg" alt="Flux Design Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            </div>
+            <div class="slide-instruction">
+              <h4 id="slide-title" style="font-size: 18px; font-weight: 700; color: var(--slate);">01. Standard-Anwendung auf hellem Grund</h4>
+              <p id="slide-text" style="font-size: 14px; line-height: 1.6; color: var(--text-dark);">Auf rein weißen Medienflächen und primären Digital-Dokumenten wird das Logo homogen im tiefen Azur-Petrol abgebildet. Es transportiert Stabilität und gestalterische Ruhe.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="print-only-slides" style="display: none;">
+          <div style="margin-top: 20px; border-top: 1px solid #CCC; padding-top: 20px;">
+            <h4>02. Corporate Dark auf Schiefer-Struktur</h4>
+            <img src="FD2.jpg" alt="Corporate Dark" style="width: 240px; margin-top: 10px;">
+          </div>
+          <div style="margin-top: 20px; border-top: 1px solid #CCC; padding-top: 20px;">
+            <h4>03. Monochrome Positiv-Variante (Tiefschwarz)</h4>
+            <img src="fd3.jpg" alt="Monochrom Positiv" style="width: 240px; margin-top: 10px;">
+          </div>
+          <div style="margin-top: 20px; border-top: 1px solid #CCC; padding-top: 20px;">
+            <h4>04. Monochrome Negativ-Variante (Lichtgrau)</h4>
+            <img src="fdw.jpg" alt="Monochrom Negativ" style="width: 240px; margin-top: 10px;">
+          </div>
+        </div>
+
+        <div class="card accent">
+          <h3>Optischer Ausgleich, Geometrie &amp; Isolationszone</h3>
+          <p>Die Konstruktion unseres Monogramms folgt nicht bloß sturen mathematischen Vektoren, sondern ist visuell auf die menschliche Wahrnehmung und digitale Screen-Performance hin optimiert:</p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; margin-bottom: 20px;">
+            <div style="background: var(--offwhite); padding: 20px; border-radius: 6px;">
+              <strong style="color: var(--azur);">Der optische Ausgleich (Antialiasing-Korrektur)</strong><br>
+              <p style="font-size: 13px; margin-top: 6px; color: var(--text-dark);">Der weit geschwungene, horizontale Bogen des „D“ wurde in der Strichstärke minimal dicker berechnet als der statische, vertikale Hauptstamm des „F“. Diese architektonische Asymmetrie verhindert, dass das Logo auf hochauflösenden Retina- und High-Density-Displays optisch verzerrt oder ungleichmäßig schwer wirkt. Der Kern bleibt fest verankert, während der Bogen dynamische Weite transportiert.</p>
+            </div>
+
+            <div style="background: var(--offwhite); padding: 20px; border-radius: 6px;">
+              <strong style="color: var(--azur);">Die mathematische Isolationszone (Clear Space)</strong><br>
+              <p style="font-size: 13px; margin-top: 6px; color: var(--text-dark);">Um die visuelle Integrität und die sofortige Wiedererkennbarkeit die Bildmarke im Interface zu garantieren, ist das Zeichen von einer unumstößlichen Schutzzone umgeben. Der minimale Schutzraum definiert sich über die Formel <strong>2X</strong>, wobei <strong>X</strong> der exakten Linienstärke des Hauptstamms (8px) entspricht.</p>
+            </div>
+          </div>
+
+          <h4>Verbindliche Schutzraum-Spezifikation:</h4>
+          <table class="spec-table" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+            <thead>
+            <tr style="background: rgba(0,0,0,0.02);">
+              <th>Viewport / Medium</th>
+              <th>Basis-Linienstärke (X)</th>
+              <th>Clear Space Radius (2X)</th>
+              <th>Einsatzbedingung</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><strong>Digitales Interface (Standard)</strong></td>
+              <td><code>8 px</code></td>
+              <td><strong><code>16 px</code></strong> (Absolutes Minimum)</td>
+              <td>Einbindung in App-Header, Web-Navigationen und Dashboards.</td>
+            </tr>
+            <tr>
+              <td><strong>Großbildschirme / 4K Hero</strong></td>
+              <td><code>16 px</code></td>
+              <td><strong><code>32 px</code></strong></td>
+              <td>Präsentationen, großflächige Landingpages und Video-Schnitt.</td>
+            </tr>
+            <tr>
+              <td><strong>Physische Printmedien</strong></td>
+              <td><code>4 mm</code></td>
+              <td><strong><code>8 mm</code></strong></td>
+              <td>Visitenkarten, Briefbögen und physisches Merchandise.</td>
+            </tr>
+            </tbody>
+          </table>
+
+          <p style="font-size: 13px; color: var(--error); margin-top: 15px; font-weight: 600;">
+            ⚠️ Strikte Systemregel: Innerhalb dieser definierten Schutzzonen dürfen sich zu keinem Zeitpunkt Texte, Kanten, andere Icons, UI-Trennlinien oder störende Bildstrukturen befinden!
+          </p>
+        </div>
+      </section>
+
+
+      <!-- Sektion 04: TYPOGRAFIE -->
+    <section id="sec-typography" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">04 / Typographic Hierarchy</span>
+        <h2>Schriftsystem &amp; Hierarchie</h2>
+        <p class="lead">Unsere Typografie trennt strikt zwischen plakativer Markenwirkung und funktionaler Lesbarkeit. Wir kombinieren eine charakterstarke Display-Schrift mit einer hochlesbaren Text-Schrift.</p>
+      </div>
+
+      <div class="card accent">
+        <h3>1. Unsere Hausschriften (Font Pairing)</h3>
+        <p>Das typografische System von Flux Design basiert auf zwei komplementären Schriftarten:</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px;">
+          <div style="background: var(--offwhite); padding: 20px; border-radius: 6px;">
+            <strong style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; color: var(--azur);">BEBAS NEUE (Display Font)</strong><br>
+            <p style="font-size: 13px; margin-top: 6px; color: var(--text-dark);"><strong>Einsatzbereich:</strong> Wortmarke/Logo, großflächige Kampagnen-Headlines, markante Sektionsnummern. Diese komprimierte All-Caps-Schrift transportiert unsere architektonische Haltung und sorgt für maximale Wiedererkennung.</p>
+          </div>
+          <div style="background: var(--offwhite); padding: 20px; border-radius: 6px;">
+            <strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 700; color: var(--slate);">PLUS JAKARTA SANS (Body Font)</strong><br>
+            <p style="font-size: 13px; margin-top: 6px; color: var(--text-dark);"><strong>Einsatzbereich:</strong> Standard-Überschriften (H2, H3), Fließtexte, Tabellen und UI-Komponenten. Sie garantiert exzellente Lesbarkeit und barrierefreie Scanbarkeit auf allen Displaygrößen.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2. Typografische Hierarchie-Matrix</h3>
+        <p>Die genauen CSS-Spezifikationen zur Steuerung der globalen Lesehierarchie im Frontend:</p>
+        <table class="spec-table" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <thead>
+          <tr style="background: rgba(0,0,0,0.02);">
+            <th>Hierarchie-Ebene</th>
+            <th>Schriftart (Font-Family)</th>
+            <th>Größe (Font-Size)</th>
+            <th>Stärke (Weight) / Stil</th>
+            <th>Zusatz-Attribut</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><strong>Brand / Logo Text</strong></td>
+            <td><code>'Bebas Neue'</code></td>
+            <td><code>36 px</code></td>
+            <td>Regular (All-Caps)</td>
+            <td><code>letter-spacing: 6px;</code></td>
           </tr>
           <tr>
-            <td><strong>Fließtext (Bodytext)</strong></td>
-            <td>16px</td>
-            <td>Normal (400)</td>
-            <td>Linksbündig (Rauh)</td>
-            <td>Dunkles Schiefer (#1C2833)</td>
+            <td><strong>Hauptüberschrift (H1)</strong></td>
+            <td><code>'Bebas Neue'</code></td>
+            <td><code>38 px</code></td>
+            <td>Regular (All-Caps)</td>
+            <td><code>letter-spacing: 2px;</code></td>
+          </tr>
+          <tr>
+            <td><strong>Sektions-Titel (H2)</strong></td>
+            <td><code>'Plus Jakarta Sans'</code></td>
+            <td><code>24 px</code></td>
+            <td>600 (Semi-Bold)</td>
+            <td><code>letter-spacing: -0.5px;</code></td>
+          </tr>
+          <tr>
+            <td><strong>Fließtext (Body)</strong></td>
+            <td><code>'Plus Jakarta Sans'</code></td>
+            <td><code>16 px</code></td>
+            <td>400 (Regular)</td>
+            <td><code>line-height: 1.6;</code></td>
           </tr>
           </tbody>
         </table>
       </div>
     </section>
+    <!-- Sektion 05: FARBSYSTEM -->
 
     <section id="sec-colors" class="content-section">
       <div class="section-hero">
-        <span class="meta-title">05 / Farbspektrum</span>
-        <h2>Unsere Firmenfarben</h2>
+        <span class="meta-title">05 / Color Spectrum Matrix</span>
+        <h2>Farbsystem & Medienspezifikationen</h2>
+        <p class="lead">Farbe steuert Kontraste, gewichtet Prioritäten und sichert die funktionale Markenidentität. Unser System ist mathematisch auf Barrierefreiheit und medienübergreifende Farbtreue kalibriert.</p>
       </div>
+
       <div class="card">
-        <h3>Exakte Definition der Farbwerte</h3>
-        <table class="color-table">
+        <h3>1. Look &amp; Feel: Das Prinzip der funktionalen Reduktion</h3>
+        <p>Die Flux Design Master-Palette nutzt bewusste Farbkontraste, um dem Auge des Nutzers eine klare Orientierung zu bieten. Jedes Interface baut auf drei hierarchischen Ebenen auf: Einer tiefen, stabilen Basis (Muted Slate), einer sauberen, weiten Projektionsfläche (Off-White) und einem hochpräzisen, medientechnischen Fokus (Azurblau). Der Neon-Cyan-Akzent wird im System exklusiv für micro-interaktive Trigger (z. B. Hover-Zustände) genutzt.</p>
+      </div>
+
+      <div class="card accent">
+        <h3>2. Quickguide: Das Verlaufsprinzip (Linear Matrix Gradient)</h3>
+        <p style="margin-bottom: 20px;">Für großflächige UI-Komponenten, Hintergrund-Abschnitte und Hero-Banner verwenden wir anstelle von flachen Volltonfarben einen mathematisch berechneten, diagonalen Farbverlauf. Dieser verbindet unsere primäre und sekundäre Markenfarbe im 45 Grad-Winkel:</p>
+
+        <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center; background: #E5E8E8; padding: 25px; border-radius: 6px;">
+          <div style="flex: 1.5; min-width: 280px; aspect-ratio: 16/7; background: linear-gradient(135deg, #115E67 0%, #0B1A1E 100%); border-radius: 4px; border: 1px solid #BDC3C7; box-shadow: inset 0 0 20px rgba(0,0,0,0.4); position: relative;">
+            <span style="position: absolute; left: 15px; top: 15px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 1px;">START: AZURBLAU (HELL)</span>
+            <span style="position: absolute; right: 15px; bottom: 15px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 1px;">ENDMÜNDUNG: SLATE (DUNKEL)</span>
+          </div>
+
+          <div style="flex: 1; min-width: 220px; font-size: 13px;">
+            <div style="margin-bottom: 12px; padding-left: 10px; border-left: 3px solid #115E67;">
+              <strong>Verlaufspunkt Hell (Ursprung)</strong><br>
+              <code style="font-size:11px;">RGB: 17 | 94 | 103</code><br>
+              <code style="font-size:11px;">HEX: #115E67</code>
+            </div>
+            <div style="padding-left: 10px; border-left: 3px solid #0B1A1E;">
+              <strong>Verlaufspunkt Dunkel (Mündung)</strong><br>
+              <code style="font-size:11px;">RGB: 11 | 26 | 30</code><br>
+              <code style="font-size:11px;">HEX: #0B1A1E</code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>3. Spezifikationen: Screenfarben (Digital Display Metrik)</h3>
+        <p>Verbindliche Variablen-Vorgaben für Frontend-Entwickler und Benutzeroberflächen-Designer, synchronisiert mit der globalen <code>style.css</code>:</p>
+
+        <table class="color-table" style="border: 1px solid #E5E8E8;">
           <thead>
           <tr>
-            <th>Farbe</th>
-            <th>Einsatzbereich</th>
-            <th>RGB (Digital)</th>
-            <th>HEX (Webcode)</th>
-            <th>CMYK (Druck)</th>
+            <th style="width: 25%;">Farbe (Live-Vorschau)</th>
+            <th>CSS-Variable / Token</th>
+            <th>RGB-Wert</th>
+            <th>HEX-Code</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td><span class="dot azur"></span> Azurblau</td>
-            <td>Primärton / Brand-Farbe</td>
-            <td>17, 94, 103</td>
-            <td>#115E67</td>
-            <td>83, 34, 43, 16</td>
+            <td><span class="dot azur" style="width:16px; height:16px; background:#115E67;"></span> <strong>Azurblau</strong></td>
+            <td><code>var(--azur)</code></td>
+            <td><code>17 / 94 / 103</code></td>
+            <td><code>#115E67</code></td>
           </tr>
           <tr>
-            <td><span class="dot offwhite"></span> Off-White</td>
-            <td>App-Hintergrund</td>
-            <td>244, 246, 246</td>
-            <td>#F4F6F6</td>
-            <td>3, 1, 1, 0</td>
+            <td><span class="dot slate" style="width:16px; height:16px; background:#0B1A1E;"></span> <strong>Muted Slate</strong></td>
+            <td><code>var(--slate)</code></td>
+            <td><code>11 / 26 / 30</code></td>
+            <td><code>#0B1A1E</code></td>
+          </tr>
+          <!-- NEU: DAS INTERAKTIONS-TOKEN FÜR DIE SIDEBAR -->
+          <tr>
+            <td><span class="dot interactive" style="width:16px; height:16px; background:#112226; display:inline-block; border-radius:50%; margin-right:8px; vertical-align:middle; border: 1px solid rgba(255,255,255,0.1);"></span> <strong>Deep Navy Slate</strong></td>
+            <td><code>#112226</code> (Sidebar Interaction)</td>
+            <td><code>17 / 34 / 38</code></td>
+            <td><code>#112226</code></td>
           </tr>
           <tr>
-            <td><span class="dot slate"></span> Muted Slate</td>
-            <td>Seitenleisten-Hintergrund</td>
-            <td>11, 26, 30</td>
-            <td>#0B1A1E</td>
-            <td>85, 50, 45, 65</td>
+            <td><span class="dot neon" style="width:16px; height:16px; background:#00E5FF; display:inline-block; border-radius:50%; margin-right:8px; vertical-align:middle;"></span> <strong>Neon-Cyan</strong></td>
+            <td><code>#00E5FF</code> (Micro-Akzent)</td>
+            <td><code>0 / 229 / 255</code></td>
+            <td><code>#00E5FF</code></td>
+          </tr>
+          <tr>
+            <td><strong>Off-White</strong></td>
+            <td><code>2 / 1 / 2 / 0</code></td>
+            <td><code>Cool Gray 1 C</code></td>
+            <td><code>9003 (Signalweiß)</code></td>
+            <td><code>Avery 500 Light-Opaque</code></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card error-card" style="border-left-color: var(--azur);">
+        <h3>4. Spezifikationen: Printfarben (Physische Reproduktion)</h3>
+        <p>Um chromatische Abweichungen bei analogen Medien, Geschäftsausstattungen, Visitenkarten oder Merchandise zu verhindern, sind für physische Druckverfahren ausschließlich folgende Übersetzungswerte zulässig:</p>
+
+        <table class="spec-table" style="width:100%; border-collapse: collapse; margin-top: 16px;">
+          <thead>
+          <tr style="background: rgba(0,0,0,0.02);">
+            <th>Markenfarbe</th>
+            <th>CMYK (Offset)</th>
+            <th>Pantone (Vollton)</th>
+            <th>RAL (Lackierung)</th>
+            <th>Foliensystem (Avery)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><strong>Azurblau</strong></td>
+            <td><code>85 / 35 / 45 / 15</code></td>
+            <td><code>7474 C</code></td>
+            <td><code>5018 (Türkisblau)</code></td>
+            <td><code>Avery 800 Premium C</code></td>
+          </tr>
+          <tr>
+            <td><strong>Muted Slate</strong></td>
+            <td><code>90 / 60 / 55 / 65</code></td>
+            <td><code>426 C</code></td>
+            <td><code>9004 (Signalschwarz)</code></td>
+            <td><code>Avery 500 Matt-Slate</code></td>
+          </tr>
+          <tr>
+            <td><strong>Neon-Cyan</strong></td>
+            <td><code>60 / 0 / 10 / 0</code></td>
+            <td><code>305 C</code></td>
+            <td><code>6027 (Lichtgrün)</code></td>
+            <td><code>M3 Scotch Special Fluorescent</code></td>
+          </tr>
+          <tr>
+            <td><strong>Off-White</strong></td>
+            <td><code>2 / 1 / 2 / 0</code></td>
+            <td><code>Cool Gray 1 C</code></td>
+            <td><code>9003 (Signalweiß)</code></td>
+            <td><code>Avery 500 Light-Opaque</code></td>
           </tr>
           </tbody>
         </table>
       </div>
     </section>
 
+
+    <!-- SEKTION 06: BILDSPRACHE & BILDMETRIK (MIT LIVE-MOCKUPS) -->
     <section id="sec-photography" class="content-section">
       <div class="section-hero">
-        <span class="meta-title">06 / Bildsprache</span>
-        <h2>Richtlinien für Fotografie & Medien</h2>
-        <p class="lead">Präziser Beschnitt und Bildkomposition für unbemerktes Premium-Marketing.</p>
+        <span class="meta-title">06 / Raster & Medien</span>
+        <h2>Bildsprache & Visuelle Assets</h2>
+        <p class="lead">Die Integration von Bildmedien in hochauflösende Benutzeroberflächen erfordert eine exakte Steuerung von Bildaufteilung, Helligkeitsverteilung und technischen Ausgabeformaten.</p>
       </div>
+
+      <!-- VISUELLE CORE-DIREKTIVE -->
       <div class="card">
-        <h3>Ästhetik & Bildkomposition</h3>
-        <ul>
-          <li><strong>Authentizität vor Perfektion:</strong> Wir zeigen echte Einblicke aus unserem Arbeitsalltag. Keine künstlichen Stock-Bilder.</li>
-          <li><strong>Asymmetrischer Fokus:</strong> Hauptmotive liegen gezielt im linken oder rechten Drittel des Bildes. Das lässt im Webinterface ausreichend Platz für Text-Overlays.</li>
+        <h3>1. Die visuelle Core-Direktive: Authentizität und Kontrast</h3>
+        <p>Digitale Plattformen im Premium-Segment verlangen eine unmissverständliche Bildästhetik. Um die visuelle Konsistenz der Marke zu wahren, distanzieren wir uns von künstlich erzeugten Studio-Inszenierungen. Unsere Bildsprache folgt klaren Vorgaben:</p>
+        <ul style="margin-top: 10px;">
+          <li><strong>Natürliche Lichtmetrik:</strong> Wir arbeiten mit realen, diffusen Lichtquellen und kühlen Lichttemperaturen.</li>
+          <li><strong>Dokumentarisches Prinzip:</strong> Abgebildete Objekte, Arbeitsgeräte und Entwicklerumgebungen werden in ihrer realen Funktionalität gezeigt.</li>
+        </ul>
+      </div>
+
+      <!-- LIVE MOCKUPS: INTERAKTIVE FORMAT-VORSCHAU (INSPIRIERT VOM ZDF BRANDGUIDE) -->
+      <div class="card accent">
+        <h3>2. Schnittmasken-Visualisierung & Viewport-Aufteilung</h3>
+        <p style="margin-bottom: 20px;">Das System zeigt hier das korrekte Verhalten von Bild-Assets in den zwei primären responsiven Viewports. Achten Sie auf die Platzierung der Brennpunkte auf der rechten Seite:</p>
+
+        <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; background: #E5E8E8; padding: 30px; border-radius: 6px;">
+
+          <!-- Mockup 1: 16:9 Widescreen (Desktop / TV) -->
+          <div style="flex: 1; min-width: 320px; max-width: 500px;">
+            <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--slate); display: block; margin-bottom: 6px;">Hero-Schnitt 16:9 (Desktop Component)</span>
+            <!-- Das interaktive Vorschaubild simulieren wir edel mit CSS-Gradients und Flexbox -->
+            <div style="width: 100%; aspect-ratio: 16/9; background: linear-gradient(90deg, rgba(11,26,30,0.95) 0%, rgba(11,26,30,0.4) 50%, rgba(17,94,103,0.1) 100%), #CCD1D1; border-radius: 4px; border: 1px solid #BDC3C7; position: relative; display: flex; align-items: flex-end; padding: 15px;">
+              <!-- Simulierter Fokuspunkt rechts -->
+              <div style="position: absolute; right: 20px; top: 20px; width: 60px; height: 60px; border: 2px dashed var(--azur); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 10px; font-weight: bold; color: var(--azur); background: rgba(255,255,255,0.7);">
+                FOCUS
+              </div>
+              <!-- Text-Overlay-Zone links -->
+              <div style="max-width: 50%; color: white;">
+                <div style="width: 40px; height: 4px; background: #00E5FF; margin-bottom: 6px;"></div>
+                <h5 style="margin: 0; font-size: 14px; font-weight: 800;">Typo Overlay</h5>
+                <p style="font-size: 10px; color: #BDC3C7; margin: 2px 0 0 0;">Sichere Textzone dank ruhigem Negative Space.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mockup 2: 8:9 Portrait-Schnitt (Mobile Framework) -->
+          <div style="width: 220px;">
+            <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--slate); display: block; margin-bottom: 6px;">Mobile-Schnitt 8:9 (Smartphone)</span>
+            <div style="width: 100%; aspect-ratio: 8/9; background: linear-gradient(0deg, rgba(11,26,30,0.95) 0%, rgba(11,26,30,0.3) 60%, rgba(17,94,103,0.1) 100%), #CCD1D1; border-radius: 4px; border: 1px solid #BDC3C7; position: relative; display: flex; align-items: flex-end; padding: 15px;">
+              <!-- Simulierter Fokuspunkt oben rechts -->
+              <div style="position: absolute; right: 15px; top: 15px; width: 50px; height: 50px; border: 2px dashed var(--azur); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 9px; font-weight: bold; color: var(--azur); background: rgba(255,255,255,0.7);">
+                FOCUS
+              </div>
+              <!-- Text-Overlay-Zone unten -->
+              <div style="color: white; width: 100%;">
+                <h5 style="margin: 0; font-size: 12px; font-weight: 800;">Responsive Fit</h5>
+                <p style="font-size: 9px; color: #BDC3C7; margin: 2px 0 0 0;">Text bricht nach unten um.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MEDIENMATRIX & VIEWPORT-SKALIERUNG -->
+      <div class="card">
+        <h3>3. Medienmatrix &amp; Technische Auflösungen</h3>
+        <p>Um plattformübergreifend eine fehlerfreie Schärfe auf Retina-Displays zu garantieren, sind Bild-Assets in fest definierten Rahmenbedingungen bereitzustellen:</p>
+        <table class="spec-table">
+          <thead>
+          <tr>
+            <th>Asset-Klasse</th>
+            <th>Seitenverhältnis</th>
+            <th>Native Mindestauflösung</th>
+            <th>Verwendung im UI-System</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr><td><strong>Desktop Hero-Banner</strong></td><td>16:9 (Widescreen)</td><td><code>3840 × 2160 px (4K UHD)</code></td><td>Großflächige Header, Startbildschirm-Hintergründe</td></tr>
+          <tr><td><strong>Mobile Hero-Banner</strong></td><td>8:9 (Porträt-Variante)</td><td><code>1152 × 1296 px</code></td><td>Kopfbereiche auf mobilen Viewports und Smartphones</td></tr>
+          <tr><td><strong>Inhalts-Kachel (Card Component)</strong></td><td>16:9 (Standard)</td><td><code>1920 × 1080 px (FHD)</code></td><td>Projekt-Vorschauen, Gridsysteme, Teaser-Elemente</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GEOMETRISCHE FLÄCHENAUFTEILUNG (THE NEGATIVE SPACE RULE) -->
+      <div class="card">
+        <h3>4. Geometrische Flächenaufteilung: Die "Ruhige Zone"-Regel</h3>
+        <p>Da Bild-Assets im Header-Bereich dynamisch überlagert werden, ist eine mathematische Aufteilung des Bildraums zwingend erforderlich:</p>
+        <div class="guideline-matrix">
+          <div class="matrix-box do">
+            <h4>✓ Rechte &amp; Obere Bildsegmente</h4>
+            <p style="font-size:14px;"><strong>Fokus-Fläche:</strong> Hier befindet sich der Schwerpunkt des Motivs. Objekte oder Personen werden asymmetrisch platziert, um eine harmonische Bildspannung zu erzeugen.</p>
+          </div>
+          <div class="matrix-box dont">
+            <h4>✗ Linke &amp; Untere Bildsegmente</h4>
+            <p style="font-size:14px;"><strong>Integrations-Fläche:</strong> Diese Zonen müssen homogen, flach und detailarm gehalten werden (Negative Space). Sie dienen als Projektionsfläche für CSS-Verläufe und weiße Typografie.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WORKFLOW & INTEGRATIONS-PARAMETRIK -->
+      <div class="card error-card">
+        <h3>5. Bereitstellungsparameter &amp; Release-Workflow</h3>
+        <p>Um Verzögerungen im Deployment zu vermeiden, gelten für die Bereitstellung von Bildmedien folgende Rahmenbedingungen:</p>
+        <ul style="margin-top:10px;">
+          <li><strong>Bereitstellungs-Frist:</strong> Alle finalen Bilddaten müssen exakt <strong>12 Wochen vor dem Release</strong> vollständig optimiert vorliegen.</li>
+          <li><strong>Technische Anforderungen:</strong> Übergabe der Rohdaten im `.PSD`-Format sowie als komprimierte, lokal gehostete `.WebP`-Dateien (sRGB-Farbraum).</li>
         </ul>
       </div>
     </section>
 
+    <!-- DESIGN-SEKTION A: UX-WRITING & TONALITÄT -->
+    <section id="sec-design-tonality" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">Design Exclusive / Microcopy</span>
+        <h2>UX-Writing &amp; Interface-Tonalität</h2>
+        <p class="lead">Worte sind Design. Jedes Label, jede Fehlermeldung und jeder Button (Microcopy) folgt einer klaren psychologischen Logik.</p>
+      </div>
+
+      <div class="card accent">
+        <h3>1. Unsere sprachlichen Leitlinien</h3>
+        <p>Flux Design spricht präzise, respektvoll und absolut transparent. Wir lassen den Nutzer niemals im Unklaren darüber, was eine Aktion bewirkt.</p>
+        <div class="guideline-matrix" style="margin-top: 15px;">
+          <div class="matrix-box do">
+            <h4>✓ Systemkonform (Do)</h4>
+            <ul>
+              <li><strong>Aktiv &amp; zielführend:</strong> "Sichern Sie Ihr Profil, um fortzufahren."</li>
+              <li><strong>Konstruktiv bei Fehlern:</strong> "Die E-Mail-Adresse benötigt ein @-Zeichen."</li>
+            </ul>
+          </div>
+          <div class="matrix-box dont">
+            <h4>✗ Unzulässig (Don't)</h4>
+            <ul>
+              <li><strong>Passiv &amp; kryptisch:</strong> "Es trat ein unerwarteter Fehler der Klasse 404 auf."</li>
+              <li><strong>Manipulativ (Dark Patterns):</strong> "Nein danke, ich möchte kein Geld sparen."</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN-SEKTION B: FIGMA DESIGN TOKENS -->
+    <section id="sec-design-tokens" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">Design Exclusive / System Architecture</span>
+        <h2>Design Tokens &amp; Variablen-Schnittstelle</h2>
+        <p class="lead">Die Brücke zwischen Figma und Code. Design Tokens definieren abstrakte Werte als feste, wiederverwendbare Variablen.</p>
+      </div>
+
+      <div class="card">
+        <h3>1. Globale Corner Radii (Eckenradien)</h3>
+        <p>Unsere Radien-Spezifikationen sorgen für eine konsistente geometrische Hierarchie im Interface:</p>
+        <table class="spec-table" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <thead>
+          <tr style="background: rgba(0,0,0,0.02);">
+            <th>Token-Name</th>
+            <th>Wert (Pixel)</th>
+            <th>Verwendungszweck im UI</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr><td><code>token.radius.sm</code></td><td><strong>4 px</strong></td><td>Kleine Checkboxen, Status-Badges, Tooltips</td></tr>
+          <tr><td><code>token.radius.md</code></td><td><strong>8 px</strong></td><td>Standard-Karten, Buttons, Dropdowns (Standard)</td></tr>
+          <tr><td><code>token.radius.lg</code></td><td><strong>16 px</strong></td><td>Große Modale Dialoge, Hero-Banner, Slider-Container</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DESIGN-SEKTION C: ACCESSIBILITY (BARRIEREFREIHEIT) -->
+    <section id="sec-design-a11y" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">Design Exclusive / Inclusivity</span>
+        <h2>Barrierefreiheit &amp; Digitale Inklusion (WCAG AA)</h2>
+        <p class="lead">Gutes Design schließt niemanden aus. Wir entwickeln Interfaces, die für jeden Menschen uneingeschränkt nutzbar sind.</p>
+      </div>
+
+      <div class="card error-card" style="border-left-color: var(--success);">
+        <h3>1. Kontrastverhältnisse &amp; Fokus-Zustände</h3>
+        <p>Um die Konformitätsstufe WCAG AA zu erreichen, prüfen Designer jede Komponente auf folgende Kriterien:</p>
+        <ul>
+          <li><strong>Text-Kontrast:</strong> Regulärer Text muss ein Kontrastverhältnis von mindestens <strong>4.5:1</strong> zum Hintergrund aufweisen.</li>
+          <li><strong>Fokus-Indikatoren:</strong> Jedes interaktive Element (Links, Buttons) benötigt einen unmissverständlichen, sichtbaren Tastatur-Fokusring (<code>:focus-visible</code>) in unserer Akzentfarbe.</li>
+          <li><strong>Farbe allein reicht nicht:</strong> Fehlermeldungen dürfen niemals nur durch rote Schrift signalisiert werden – es muss immer ein klärendes Icon oder ein erklärender Text hinzugestellt werden.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Sektion 07: LAYOUT & 8PX GRID ENGINE (DETAILLIERT) -->
     <section id="sec-grid" class="content-section">
       <div class="section-hero">
-        <span class="meta-title">07 / Rastermaße</span>
-        <h2>Das 2x Grid-System</h2>
+        <span class="meta-title">07 / Grid &amp; Space Engineering</span>
+        <h2>2x Grid-System &amp; Layout-Engine</h2>
+        <p class="lead">Unser Layout basiert auf einem strikten, proportionalen Rastersystem. Es ordnet alle visuellen Elemente entlang einer mathematischen Achse an und garantiert visuelle Balance auf jedem Display.</p>
       </div>
+
       <div class="card">
-        <h3>Symmetrie und Layout-Raster</h3>
-        <p>Alle Abstände (Paddings, Margins) und Elementbreiten basieren auf dem mathematischen Prinzip der Verdopplung, ausgehend von einer 8px-Basis (8, 16, 32, 64, 128px).</p>
+        <h3>1. Die 8px-Core-Engine: Das Prinzip der linearen Skalierung</h3>
+        <p>Abstände, Innenränder (Paddings) und Außenabstände (Margins) werden bei Flux Design niemals nach Gefühl oder Schätzung gewählt. Das gesamte Design-System skaliert linear entlang einer **proportionalen 8px-Raster-Matrix**. Jedes Element, jede Karte und jeder Weißraum muss durch 8 teilbar sein. Dies schafft eine unbewusste gestalterische Ruhe und sorgt im Code für saubere, vorhersagbare CSS-Schnittstellen.</p>
+
+        <div style="margin-top: 15px; padding: 15px; background: var(--offwhite); border-radius: 4px; font-family: monospace; font-size: 13px; border-left: 3px solid var(--azur);">
+          <strong>Zulässige Skalierungsschritte (Spacing Tokens):</strong><br>
+          <code style="color: var(--azur);">8px (Minimal) ➔ 16px (Standard Component) ➔ 24px (Card Padding) ➔ 32px ➔ 48px ➔ 64px (Section Margin)</code>
+        </div>
+      </div>
+
+      <div class="card accent">
+        <h3>2. Spalten-Spezifikationen &amp; Haltepunkte (Breakpoints)</h3>
+        <p>Für flexible Seiten-Layouts nutzen wir eine responsive Spalten-Matrix. Das Layout passt sich dynamisch an die verfügbare Bildschirmbreite an:</p>
+
+        <table class="spec-table" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <thead>
+          <tr style="background: rgba(0,0,0,0.02);">
+            <th>Viewport-Klasse</th>
+            <th>Ziel-Geräte</th>
+            <th>Spalten (Columns)</th>
+            <th>Spaltenabstand (Gutter)</th>
+            <th>Seitenrand (Margin)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><strong>Desktop / TV</strong><br><code>max-width: 1200px</code></td>
+            <td>Monitore, iMacs, Laptops, Big Screens</td>
+            <td><strong>12 Columns</strong> (Flexibel)</td>
+            <td><code>24 px</code></td>
+            <td><code>80 px</code> (Bühnenrand)</td>
+          </tr>
+          <tr>
+            <td><strong>Tablet / Medium</strong><br><code>max-width: 768px</code></td>
+            <td>iPads, Hochformat-Bildschirme</td>
+            <td><strong>8 Columns</strong></td>
+            <td><code>16 px</code></td>
+            <td><code>32 px</code></td>
+          </tr>
+          <tr>
+            <td><strong>Mobile / Small</strong><br><code>max-width: 480px</code></td>
+            <td>Smartphones, Mobile Browser</td>
+            <td><strong>4 Columns</strong></td>
+            <td><code>16 px</code></td>
+            <td><code>16 px</code></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>3. Die Inhalts-Bühne: Maximale Inhaltsbreite (1200px)</h3>
+        <p>Um die optimale ergonomische Leselänge für das menschliche Auge zu gewährleisten, ist die maximale Breite unseres Inhalts-Layouts (Content-Stage) im Desktop-Modus unumstößlich auf <strong>1200px</strong> gedeckelt. Breitere Monitore zentrieren die Inhaltsbühne automatisch und füllen den verbleibenden Platz mit unserem sauberen Hintergrund-Token <code>var(--offwhite)</code>.</p>
+      </div>
+
+      <div class="card">
+        <h3>4. Implementierungs-Richtlinien für Frontend-Entwickler</h3>
+        <p>Die Strukturierung von CSS-Grid- und Flexbox-Systemen im Code muss den architektonischen Richtlinien des Rasters entsprechen:</p>
+
+        <div class="guideline-matrix" style="margin-top: 15px;">
+          <div class="matrix-box do">
+            <h4>✓ Systemkonforme Layouts</h4>
+            <ul>
+              <li>Nutze für mehrspaltige Layouts natives CSS-Grid (<code>display: grid; grid-template-columns: repeat(12, 1fr);</code>).</li>
+              <li>Verwende für unregelmäßige UI-Elemente wie Buttons oder Textabsätze Margins und Paddings, die ein direktes Vielfaches von 8 bilden (z. B. <code>margin-bottom: 24px;</code>).</li>
+              <li>Achte darauf, dass Spaltenzwischenräume (Gutter) exakt eingehalten werden, um harmonische Fluchtlinien zu erzeugen.</li>
+            </ul>
+          </div>
+          <div class="matrix-box dont">
+            <h4>✗ Unzulässige Abweichungen</h4>
+            <ul>
+              <li>Die Verwendung von ungeraden Pixelwerten (z. B. <code>padding: 13px;</code> oder <code>margin: 19px;</code>) ist im Code strikt untersagt.</li>
+              <li>Niemals feste, statische Pixelbreiten für Spalten definieren – das Rastersystem muss innerhalb der Inhaltsbühne immer fluid und responsiv skalieren.</li>
+              <li>Vermeide das freie Schätzen von Abständen über leere Zeilenumbrüche (<code>&lt;br&gt;</code>) oder unregelmäßige Text-Absätze.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- Sektion 08: ICON-SYSTEM (DETAILLIERT) -->
     <section id="sec-components" class="content-section">
       <div class="section-hero">
-        <span class="meta-title">08 / Benutzeroberfläche</span>
-        <h2>Interaktive UI-Komponenten</h2>
+        <span class="meta-title">08 / Interactive Components</span>
+        <h2>Das UI- &amp; Icon-System</h2>
+        <p class="lead">Unser Interface-Baukasten steuert das Zusammenspiel aus Ikonografie, interaktiven Komponenten und funktionalen Zuständen. Jedes Element folgt einer mathematischen und ergonomischen Logik.</p>
       </div>
+
       <div class="card">
-        <h3>Vorschau von Elementen</h3>
-        <p>Testen Sie hier die Interaktion unserer Buttons. Hover- und Klick-Animationen spiegeln das medientechnische Niveau unserer Agentur wider.</p>
-        <button class="flux-btn">Interaktiver Button</button>
+        <h3>1. Die drei funktionalen Icon-Klassen</h3>
+        <p>Icons dienen der sofortigen Orientierung und reduzieren die kognitive Belastung des Nutzers. Wir nutzen im gesamten System einfarbige, geometrisch präzise Kontur-Icons (Line Style). Jedes Icon wird einer von drei Klassen zugeordnet:</p>
+        <ul style="margin-top: 10px;">
+          <li><strong>UI Icons (Aktions-Vektoren):</strong> Hochfunktionale Symbole für Schaltflächen, Navigationen, Eingabefelder und Tabellen-Aktionen. Sie verändern ihre Farbe synchron zum Textzustand.</li>
+          <li><strong>App Icons (Identitäts-Vektoren):</strong> Komplexe Bildzeichen, die Dimension und Markenfarben nutzen. Sie werden exklusiv für System-Startbilder und die Haupt-Dashboard-Kacheln auf dem Auswahlschirm verwendet.</li>
+          <li><strong>Piktogramme (Narrative Illustrationen):</strong> Fein detaillierte Linienzeichnungen, um technische Prozesse oder funktionale Workflows (z. B. Datenflüsse) visuell auf Informationsseiten zu erklären.</li>
+        </ul>
+      </div>
+
+      <div class="card accent">
+        <h3>2. Vektor-Konstruktion &amp; Grid-Spezifikationen</h3>
+        <p>Um ein Verwaschen der Vektorkanten auf ungleichmäßigen Displays zu verhindern, müssen alle Icons zwingend auf einem mathematischen Pixel-Raster konstruiert und exakt auf ganze Pixelwerte (Pixel-Snapping) ausgerichtet werden:</p>
+
+        <table class="spec-table" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <thead>
+          <tr style="background: rgba(0,0,0,0.02);">
+            <th>Native Viewbox</th>
+            <th>Strichstärke (Stroke)</th>
+            <th>Sicherheits-Padding</th>
+            <th>Einsatzbereich im Frontend</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><strong>16px × 16px</strong></td>
+            <td><code>1.0 px</code></td>
+            <td><code>1 px</code> (Rundherum)</td>
+            <td>Inline-Textelemente, kleine Status-Badges, enge Tabellenzellen.</td>
+          </tr>
+          <tr>
+            <td><strong>24px × 24px</strong></td>
+            <td><code>1.5 px</code></td>
+            <td><code>2 px</code></td>
+            <td>Haupt-Navigation (Sidebar), Standard-Buttons, Formular-Eingabefelder.</td>
+          </tr>
+          <tr>
+            <td><strong>32px × 32px</strong></td>
+            <td><code>2.0 px</code></td>
+            <td><code>3 px</code></td>
+            <td>Modale Dialog-Header, große Dashboard-Karten-Überschriften.</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>3. Interaktions-Ergonomie: Die 44px-Mindestklickfläche</h3>
+        <p>Aus Gründen der Barrierefreiheit und der mobilen Touch-Bedienung (gemäß den globalen Apple- und Google-Ergonomie-Standards) gilt für alle interaktiven Komponenten eine unumstößliche Mindestgröße:</p>
+        <div style="background: var(--offwhite); padding: 20px; border-radius: 6px; margin-top: 12px; border-left: 3px solid var(--azur);">
+          <strong>Das Klickflächen-Dilemma:</strong> Ein Icon kann visuell nur 16px groß sein, aber seine interaktive Touch- und Klickzone (inklusive unsichtbarem CSS-Padding) muss <strong>mindestens exakt 44px × 44px</strong> betragen. Dies verhindert Fehlklicks und garantiert eine flüssige User Experience auf mobilen Endgeräten.
+        </div>
+
+      <div class="card">
+        <h3>4. Semantische UI-Zustände (Status-Metrik)</h3>
+        <p>Farben innerhalb des Komponenten-Systems dienen der visuellen Rückmeldung über den Systemstatus. Entwickler müssen für dynamische Rückmeldungen die folgenden standardisierten Farb-Token nutzen:</p>
+
+        <table class="color-table" style="margin-top: 16px;">
+          <thead>
+          <tr>
+            <th>Status-Typ</th>
+            <th>Zustands-Bedeutung</th>
+            <th>Zugeordneter Farb-Token</th>
+            <th>Visuelle Live-Vorschau</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><strong>Standard / Active</strong></td>
+            <td>Normalzustand eines Elements, aktive Navigation oder primärer Fokus.</td>
+            <td><code>var(--azur)</code></td>
+            <td><span style="display:inline-block; width:40px; height:12px; background:#115E67; border-radius:2px;"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Success / Valid</strong></td>
+            <td>Erfolgreicher Prozessabschluss, korrekte Formulareingabe, System online.</td>
+            <td><code>var(--success)</code></td>
+            <td><span style="display:inline-block; width:40px; height:12px; background:#34C759; border-radius:2px;"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Error / Alert</strong></td>
+            <td>Kritischer Systemfehler, abgebrochene Verbindung, fehlerhafte Validierung.</td>
+            <td><code>var(--error)</code></td>
+            <td><span style="display:inline-block; width:40px; height:12px; background:#FF3B30; border-radius:2px;"></span></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>5. Ausrichtung &amp; Visuelle Compliance</h3>
+        <p>Das harmonische Zusammenspiel aus Typografie und Ikonografie wird über strenge visuelle Richtlinien abgesichert:</p>
+
+        <div class="guideline-matrix" style="margin-top: 15px;">
+          <div class="matrix-box do">
+            <h4>✓ Systemkonforme Implementierung</h4>
+            <ul>
+              <li>Icons neben Textfeldern immer über die <strong>optische Mittelachse</strong> vertikal zentrieren, niemals über die mathematische Kante.</li>
+              <li>Ein Icon muss farblich immer exakt den Zustand seines direkt begleitenden Textes annehmen (Color Pairing).</li>
+              <li>Einhaltung eines Kontrastverhältnisses von mindestens 4.5:1 zum Hintergrund (WCAG AA Standard).</li>
+            </ul>
+          </div>
+          <div class="matrix-box dont">
+            <h4>✗ Unzulässige Implementierung</h4>
+            <ul>
+              <li>Niemals Icons mechanisch an der typografischen Grundlinie (Baseline) des Textes ausrichten, da dies zu optischem Versatz führt.</li>
+              <li>Die Verwendung von mehrfarbigen, schattierten oder verspielten Icons innerhalb produktiver UI-Komponenten ist strikt untersagt.</li>
+              <li>Icons dürfen nicht skaliert werden, indem die CSS-Eigenschaften verzerrt werden – es sind ausschließlich die nativen Viewboxen zu laden.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Sektion 09: DATENSCHUTZ & DIGITAL COMPLIANCE (DETAILLIERT) -->
+    <section id="sec-compliance" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">09 / Legal Engineering</span>
+        <h2>Datenschutz & Digital Compliance</h2>
+        <p class="lead">Datensicherheit ist für Flux Design kein nachträgliches rechtliches Übel, sondern ein zentrales Qualitätsmerkmal unseres Handwerks. Wir integrieren die DSGVO direkt in den Design- und Entwicklungsprozess.</p>
+      </div>
+
+      <div class="card">
+        <h3>1. Brand Trust: Datenschutz als UX-Merkmal</h3>
+        <p>Ein exzellentes digitales Interface verliert jede Glaubwürdigkeit, wenn es nachlässig mit den Daten seiner Nutzer umgeht. Als hochpreisige Agentur sichern wir das Vertrauen in die Marken unserer Kunden ab, indem wir das Prinzip <strong>"Privacy by Design und Privacy by Default"</strong> anwenden. Das bedeutet: Jedes Formular, jede Interaktion und jede Speicherlogik wird von vornherein so minimal und datensparsam konzipiert, wie es technisch möglich ist.</p>
+      </div>
+
+      <div class="card error-card" style="border-left-color: var(--azur);">
+        <h3>2. Technisches Frontend-Engineering: Lokales Asset-Hosting</h3>
+        <p>Um unzulässige Datenabflüsse an Drittstaaten zu verhindern und die Ladezeiten (Performance-Budgets) zu optimieren, gilt für alle Entwickler eine strikte Kernregel:</p>
+        <p style="margin-top: 10px; font-weight: 600; color: var(--azur);">➔ Alle externen Bibliotheken, Fonts, Skripte und Icon-Systeme müssen physisch auf unseren eigenen, DSGVO-konformen Servern gehostet werden.</p>
+
+        <table class="spec-table" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+          <thead>
+          <tr style="background: rgba(0,0,0,0.02);">
+            <th>Asset-Klasse</th>
+            <th>Verbotener Workflow (Drittland-CDN)</th>
+            <th>Verbindlicher Workflow (Local Hosting)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><strong>Typografie / Fonts</strong></td>
+            <td>Dynamische Live-Einbindung über Google Fonts Server.</td>
+            <td>Lokaler Download der <code>Woff2</code>-Dateien und Einbindung via CSS <code>@font-face</code>.</td>
+          </tr>
+          <tr>
+            <td><strong>UI- &amp; Icon-Frameworks</strong></td>
+            <td>Laden von Skripten über öffentliche CDNs (cdnjs, jsDelivr etc.).</td>
+            <td>Installation der Pakete via npm und Kompilierung in die lokalen Core-Assets.</td>
+          </tr>
+          <tr>
+            <td><strong>Analyse / Tracking</strong></td>
+            <td>Ungefragtes Laden von Drittanbieter-Skripten beim ersten Seitenaufruf.</td>
+            <td>Injektion von Tracking-Skripten erst nach explizitem, aktivem User-Opt-In.</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>3. Interaktions-Design: Formulare &amp; Einwilligungen</h3>
+        <p>Beim Entwurf von Benutzeroberflächen müssen Designer und Entwickler sicherstellen, dass Formulare und Cookie-Zustimmungen den gesetzlichen Kriterien der Transparenz entsprechen:</p>
+
+        <div class="guideline-matrix" style="margin-top: 15px;">
+          <div class="matrix-box do">
+            <h4>✓ Konforme UI-Muster (Do's)</h4>
+            <ul>
+              <li>Kontaktformulare fragen standardmäßig nur die absolut notwendigen Pflichtdaten ab (z. B. nur die E-Mail-Adresse).</li>
+              <li>Einwilligungs-Checkboxen (Opt-In) sind im Ausgangszustand standardmäßig **leer** und erfordern eine aktive Handlung.</li>
+              <li>Datenschutzerklärungen sind mit maximal einem Klick aus jedem Zustand des Interfaces barrierefrei erreichbar.</li>
+            </ul>
+          </div>
+          <div class="matrix-box dont">
+            <h4>✗ Unzulässiges Dark Pattern (Don'ts)</h4>
+            <ul>
+              <li>Niemals vorausgewählte Checkboxen („Pre-ticked Boxes“) für Newsletter oder Datenfreigaben verwenden.</li>
+              <li>Verbot von „Dark Patterns“: Die Schaltfläche zum Ablehnen von Cookies darf visuell nicht versteckt oder kognitiv benachteiligt werden.</li>
+              <li>Abfragen von Telefonnummern oder Geburtsdaten als Pflichtfeld bei reinen Text- oder Download-Anfragen ist untersagt.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- Sektion 10: INTERAKTION & MOTION -->
     <section id="sec-animation" class="content-section">
       <div class="section-hero">
-        <span class="meta-title">09 / Bewegung</span>
-        <h2>Kinetische Prinzipien</h2>
+        <span class="meta-title">10 / Kinetic Systems</span>
+        <h2>Interaktion &amp; Bewegung</h2>
+        <p class="lead">Bewegung ist kein dekoratives Element, sondern ein funktionales Werkzeug. Unser Motion-Design steuert die kognitive Führung, visualisiert Systemzustände und gibt dem Nutzer direktes Feedback.</p>
       </div>
+
       <div class="card">
-        <h3>Flüssige Übergänge (Flux Motion)</h3>
-        <p>Bewegungen im Web sind niemals abrupt. Alle Interaktionen und Seitenwechsel auf unseren Plattformen nutzen eine sanfte Beschleunigung. Animationen dauern exakt <strong>300ms</strong> und verwenden den standardisierten Zeitverlauf: <code>cubic-bezier(0.4, 0, 0.2, 1)</code>.</p>
+        <h3>1. Die Motion-Philosophie: Funktionale Kinetik</h3>
+        <p>Bei Flux Design folgt jede Animation einer physikalischen und logischen Notwendigkeit. Wir lehnen rein dekorative, ablenkende oder künstlich in die Länge gezogene Effekte strikt ab. Bewegung im Interface hat exakt drei Aufgaben zu erfüllen:</p>
+        <ul>
+          <li><strong>Kognitive Führung:</strong> Sie zeigt dem Anwender, woher ein Element kommt und wohin es sich bewegt (z. B. das Einblenden der Inhaltsbühne nach der Rollenauswahl).</li>
+          <li><strong>Zustands-Klarheit:</strong> Sie signalisiert sofort, ob eine Aktion erfolgreich war, geladen wird oder einen Fehler aufweist.</li>
+          <li><strong>Responsives Feedback:</strong> Sie vermittelt ein Gefühl von haptischer Direktheit auf digitalen Touch- und Klick-Flächen.</li>
+        </ul>
+      </div>
+
+      <div class="card accent">
+        <h3>2. Timing-Matrix &amp; Interpolationskurven</h3>
+        <p>Um ein einheitliches, hochwertiges Interaktionsgefühl zu garantieren, sind alle CSS-Transitions und Keyframe-Animationen an feste Zeitfenster (Durations) und mathematische Beschleunigungsverläufe gebunden:</p>
+
+        <table class="spec-table" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <thead>
+          <tr style="background: rgba(0,0,0,0.02);">
+            <th>Interaktions-Typ</th>
+            <th>Dauer (Duration)</th>
+            <th>CSS-Dämpfungskurve (Easing)</th>
+            <th>Technische Anwendung (Beispiel)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><strong>Micro-Interaktionen</strong></td>
+            <td><code>150 ms - 200 ms</code></td>
+            <td><code>ease-in-out</code></td>
+            <td>Hover-Effekte auf Buttons, Farbwechsel bei Links, Icon-Skalierung.</td>
+          </tr>
+          <tr>
+            <td><strong>Komponenten-Zustände</strong></td>
+            <td><code>300 ms</code></td>
+            <td><code>cubic-bezier(0.4, 0, 0.2, 1)</code></td>
+            <td>Ein- und Ausklappen von Akkordeons, Modale Dialoge, Dropdowns.</td>
+          </tr>
+          <tr>
+            <td><strong>Seiten- / Rollenwechsel</strong></td>
+            <td><code>400 ms</code></td>
+            <td><code>cubic-bezier(0.4, 0, 0.2, 1)</code></td>
+            <td>Großflächige Transformationen wie der Übergang vom Selection-Screen.</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top: 20px; padding: 15px; background: var(--offwhite); border-radius: 4px; font-family: monospace; font-size: 13px; border-left: 3px solid var(--azur);">
+          <strong>Standard-Code-Token für CSS:</strong><br>
+          <code style="color: var(--azur);">transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);</code>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>3. Visuelle Richtlinien &amp; Bewegungsmuster</h3>
+        <p>Bewegungen müssen sich organisch und kontrolliert anfühlen. Das UI-System unterscheidet strikt zwischen funktionaler Kinetik und störenden Effekten:</p>
+
+        <div class="guideline-matrix" style="margin-top: 15px;">
+          <div class="matrix-box do">
+            <h4>✓ Zulässige Bewegungsmuster</h4>
+            <ul>
+              <li>Dezentes, vertikales Verschieben (z. B. <code>translateY(10px)</code>) beim Einblenden von Karten, um dem Auge die Leserichtung vorzugeben.</li>
+              <li>Sanfte Opazitäts-Wechsel (Fade-In/Fade-Out) für weiche, unaufdringliche Übergänge.</li>
+              <li>Sanftes Pulsieren bei kritischen Systemprozessen (z. B. das Laden im Hintergrund) zur beruhigenden Nutzerführung.</li>
+            </ul>
+          </div>
+          <div class="matrix-box dont">
+            <h4>✗ Unzulässige Bewegungsmuster</h4>
+            <ul>
+              <li>Niemals rotierende, unkontrolliert fliegende oder hüpfende Elemente (Bounce-Effekte) verwenden.</li>
+              <li>Animationen dürfen den Workflow des Nutzers niemals blockieren. Die Ladezeit oder der Klick-Rhythmus darf nicht künstlich verzögert werden.</li>
+              <li>Verbot von ungedämpften, linearen Bewegungen (<code>transition: linear</code>), da diese unnatürlich und mechanisch wirken.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!--dev section-->
+
+    <section id="sec-dev-architecture" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">Dev Exclusive / Code Engineering</span>
+        <h2>Code-Architektur &amp; Semantisches HTML</h2>
+        <p class="lead">Sauberer Code ist die unsichtbare Hälfte unseres Designs. Wir erzwingen barrierefreie, semantische HTML5-Strukturen und eine standardisierte CSS-Nomenklatur.</p>
+      </div>
+
+      <div class="card accent">
+        <h3>1. Die BEM-Klassennomenklatur (Block, Element, Modifier)</h3>
+        <p>Um Kaskaden-Konflikte und "CSS-Spaghetti" zu verhindern, schreiben Entwickler CSS-Klassen ausnahmslos nach dem strengen BEM-Standard. Reine ID-Selektoren für das Styling sind im produktiven Code untersagt.</p>
+
+        <div style="margin-top: 15px; padding: 15px; background: var(--offwhite); border-radius: 4px; font-family: monospace; font-size: 13px; border-left: 3px solid var(--azur);">
+          <strong>Code-Beispiel (BEM-Struktur):</strong><br>
+          <code style="color: var(--text-dark); display:block; margin-top:5px;">&lt;!-- Block-Komponente --&gt;</code>
+          <code style="color: var(--azur);">&lt;div class="flux-card"&gt;</code><br>
+          <code style="color: var(--text-dark); padding-left: 15px; display:block;">&lt;!-- Element innerhalb des Blocks --&gt;</code>
+          <code style="color: var(--azur); padding-left: 15px;">&lt;h3 class="flux-card__title"&gt;Titel&lt;/h3&gt;</code><br>
+          <code style="color: var(--text-dark); padding-left: 15px; display:block;">&lt;!-- Modifier zur Zustandsteuerung --&gt;</code>
+          <code style="color: var(--azur); padding-left: 15px;">&lt;button class="flux-btn flux-btn--disabled"&gt;Senden&lt;/button&gt;</code><br>
+          <code style="color: var(--azur);">&lt;/div&gt;</code>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2. Semantische Hierarchie vs. Div-Wüsten</h3>
+        <p>Interfaces müssen für Screenreader von Natur aus lesbar sein. Das unüberlegte Verschachteln von namenlosen Containern (<code>&lt;div&gt;</code>) ist durch semantische HTML5-Tags zu ersetzen:</p>
+        <div class="guideline-matrix" style="margin-top: 12px;">
+          <div class="matrix-box do">
+            <h4>✓ Erlaubte Semantik</h4>
+            <ul>
+              <li>Nutze <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code> und <code>&lt;aside&gt;</code> für die Seitenstruktur.</li>
+              <li>Interaktive Klick-Elemente sind zwingend ein <code>&lt;button&gt;</code> oder ein valider Anker-Link <code>&lt;a&gt;</code>.</li>
+            </ul>
+          </div>
+          <div class="matrix-box dont">
+            <h4>✗ Unzulässige Implementierung</h4>
+            <ul>
+              <li>Niemals ein <code>&lt;div onclick="..."&gt;</code> für primäre Aktionen nutzen, da dies die Tastaturnavigation bricht.</li>
+              <li>Überspringen von Überschriften-Ebenen (z. B. ein <code>H3</code> direkt auf ein <code>H1</code> folgen lassen) ist verboten.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-dev-performance" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">Dev Exclusive / Optimization</span>
+        <h2>Performance Budgets &amp; Asset-Spezifikationen</h2>
+        <p class="lead">Geschwindigkeit ist ein Core-Feature. Die medientechnische Performance unserer Anwendungen wird über strenge Ladezeit-Obergrenzen (Budgets) kontrolliert.</p>
+      </div>
+
+      <div class="card">
+        <h3>1. Core Web Vitals (Grenzwerte)</h3>
+        <p>Jedes von Flux Design ausgelieferte System muss im Google Lighthouse Audit einen Performance-Score von <strong>&gt; 95 Punkten</strong> erreichen. Es gelten folgende maximale Zeitbudgets unter simulierten 3G-Netzwerkbedingungen:</p>
+
+        <table class="spec-table" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <thead>
+          <tr style="background: rgba(0,0,0,0.02);">
+            <th>Metrik (Core Web Vital)</th>
+            <th>Beschreibung</th>
+            <th>Maximales Budget (Hard Limit)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><strong>LCP</strong> (Largest Contentful Paint)</td>
+            <td>Zeitpunkt, an dem das Haupt-Asset (z. B. Hero-Bild) gerendert ist.</td>
+            <td><code>&lt; 1.8 Sekunden</code></td>
+          </tr>
+          <tr>
+            <td><strong>FID</strong> (First Input Delay)</td>
+            <td>Reaktionsgeschwindigkeit des Browsers auf den ersten Nutzer-Klick.</td>
+            <td><code>&lt; 50 Millisekunden</code></td>
+          </tr>
+          <tr>
+            <td><strong>CLS</strong> (Cumulative Layout Shift)</td>
+            <td>Grad der unerwarteten Layout-Verschiebungen während des Ladens.</td>
+            <td><code>0.0</code> (Absolut statisch)</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card error-card">
+        <h3>2. Asset Compression Pipeline</h3>
+        <p>Kein Asset wird unkomprimiert ausgeliefert. Bilder sind ausnahmslos in das moderne <code>.webp</code>- oder <code>.avif</code>-Format zu konvertieren. Quelltexte (HTML, CSS, JavaScript) müssen vor dem Server-Deployment durch automatisierte Build-Pipelines minifiziert und mittels Gzip oder Brotli komprimiert werden.</p>
+      </div>
+    </section>
+
+    <section id="sec-dev-css" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">Dev Exclusive / Style Architecture</span>
+        <h2>CSS Custom Properties &amp; responsive Skalierung</h2>
+        <p class="lead">Zentrale Steuerung statt verstreuter Festwerte. Unsere Design-Tokens werden über kaskadierende CSS-Variablen gepflegt.</p>
+      </div>
+
+      <div class="card accent">
+        <h3>1. Relative Maßeinheiten: Das Rem-Diktat</h3>
+        <p>Um eine nahtlose Skalierung und vollkommene Barrierefreiheit für Sehbehinderte zu gewährleisten, sind feste Pixel-Werte (<code>px</code>) für Schriftgrößen, Innenabstände und Zeilenhöhen im CSS strengstens verboten. Alle Werte müssen in Abhängigkeit zur Root-Schriftgröße über die relative Einheit <strong>`rem`</strong> deklariert werden.</p>
+
+        <div style="margin-top: 15px; padding: 20px; background: var(--offwhite); border-radius: 6px; font-family: monospace; font-size: 13px;">
+          <strong>Berechnungs-Logik (1rem = 16px):</strong>
+          <ul style="margin-top: 10px; padding-left: 20px;">
+            <li><code>font-size: 1.00rem; /* Entspricht 16px (Standard-Fließtext) */</code></li>
+            <li><code>font-size: 1.50rem; /* Entspricht 24px (H2-Titel) */</code></li>
+            <li><code>padding: 2.00rem;   /* Entspricht 32px (Card Padding) */</code></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!--social section-->
+    <section id="sec-social-feed" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">Social Exclusive / Feed Architecture</span>
+        <h2>Feed-Ästhetik &amp; Format-Hierarchien</h2>
+        <p class="lead">Der erste Eindruck im Content-Feed entscheidet über Millisekunden an Aufmerksamkeit. Unsere Social-Media-Assets brechen die visuelle Monotonie durch mathematische Kontraste.</p>
+      </div>
+
+      <div class="card accent">
+        <h3>1. Format-Matrix und Seitenverhältnisse</h3>
+        <p>Grafiken und Karussell-Posts werden plattformspezifisch gerendert. Es gelten kompromisslose Seitenverhältnisse, um unschöne automatische Zuschnitte durch Algorithmen zu verhindern:</p>
+        <table class="spec-table" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <thead>
+          <tr style="background: rgba(0,0,0,0.02);">
+            <th>Plattform</th>
+            <th>Formattyp</th>
+            <th>Seitenverhältnis</th>
+            <th>Ziel-Auflösung</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr><td><strong>LinkedIn / Insta</strong></td><td>Feed-Standard (Portrait)</td><td><strong>4:5</strong></td><td>1350 x 1080 px</td></tr>
+          <tr><td><strong>Instagram / TikTok</strong></td><td>Stories &amp; Reels</td><td><strong>16:9 (Vertikal)</strong></td><td>1920 x 1080 px</td></tr>
+          <tr><td><strong>YouTube</strong></td><td>Video-Thumbnail</td><td><strong>16:9 (Horizontal)</strong></td><td>1280 x 720 px</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>2. Typografie im Feed</h3>
+        <p>Da Posts auf mobilen Endgeräten oft stark verkleinert dargestellt werden, gilt im Social-Bereich: <strong>Boldness over Elegance</strong>. Subtile Schriftschnitte wie <strong>Light</strong> oder <strong>Regular</strong> sind für Text auf Grafiken untersagt. Es wird ausnahmslos der Schnitt <strong>Inter Bold</strong> oder <strong>Black</strong> mit einem minimal verringerten Zeichenabstand (Letter-Spacing: -0.02em) verwendet.</p>
+      </div>
+    </section>
+
+    <section id="sec-social-video" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">Social Exclusive / Motion Design</span>
+        <h2>Video-Content &amp; Safe Zones</h2>
+        <p class="lead">Bewegtbild transportiert den technologischen Rhythmus von Flux Design. Dynamische Overlays und Untertitel folgen einem festen Sicherheitslayout.</p>
+      </div>
+
+      <div class="card error-card" style="border-left-color: var(--azur);">
+        <h3>1. Safe Zones (Sicherheitsbereiche) für Reels und Shorts</h3>
+        <p>Um zu verhindern, dass essenzielle UI-Elemente, Logos oder Untertitel durch plattformeigene Interaktions-Buttons (Like, Share, Kommentare) oder Profil-Overlays verdeckt werden, gilt eine strikte <strong>Keep-Clear-Regel</strong>:</p>
+        <ul>
+          <li><strong>Oberer Rand:</strong> Die oberen 220 Pixel freihalten (Sicherheitsabstand für App-Header).</li>
+          <li><strong>Unterer Rand:</strong> Die unteren 280 Pixel sind tabu für Textelemente (Sicherheitsabstand für Profilnamen und Captions).</li>
+          <li><strong>Rechter Rand:</strong> Ein vertikaler Streifen von 150 Pixeln Breite auf der rechten Seite darf keine fokussierten grafischen Elemente enthalten (Interaktions-Leiste).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="sec-social-pr" class="content-section">
+      <div class="section-hero">
+        <span class="meta-title">PR Exclusive / Media Relations</span>
+        <h2>PR-Assets &amp; Co-Branding-Richtlinien</h2>
+        <p class="lead">Die externe Kommunikation mit der Fachpresse erfordert maximale visuelle Souveränität. Hier wird definiert, wie Flux Design neben Partnermarken koexistiert.</p>
+      </div>
+
+      <div class="card">
+        <h3>1. Das Co-Branding-Verfahren ("Zwei-Marken-Hierarchie")</h3>
+        <p>Bei offiziellen Medienpartnerschaften, Pressemitteilungen oder gemeinsamen Events mit Kunden darf das Logo von Flux Design niemals mit dem Partner-Logo verschmelzen:</p>
+        <div class="guideline-matrix" style="margin-top: 15px;">
+          <div class="matrix-box do">
+            <h4>✓ Korrekte Platzierung</h4>
+            <ul>
+              <li>Die Logos werden durch eine vertikale Linie in <code>var(--slate)</code> (Stärke: 1px, Deckkraft: 30%) getrennt.</li>
+              <li>Die Schutzraum-Regel des Logos (2x Höhe des inneren Elements) wird verdoppelt.</li>
+            </ul>
+          </div>
+          <div class="matrix-box dont">
+            <h4>✗ Visueller Konflikt</h4>
+            <ul>
+              <li>Keine farbigen Hintergründe unter einem der beiden Logos, wenn sie auf einer gemeinsamen Bühne stehen.</li>
+              <li>Das Logo von Flux Design steht bei eigenen Pressemitteilungen links – niemals rechts oder untergeordnet.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sektion 11: DOWNLOADS & RESOURCES -->
     <section id="sec-downloads" class="content-section">
       <div class="section-hero">
-        <span class="meta-title">10 / Ressourcen</span>
-        <h2>Downloads & Marken-Assets</h2>
+        <span class="meta-title">11 / Ressourcen</span>
+        <h2>Downloads &amp; Vorlagen</h2>
+        <p class="lead">Hier finden Sie alle verifizierten Assets und den kompletten System-Export.</p>
       </div>
-      <div class="card">
-        <div class="grid-2col">
-          <div class="download-box">Vektor-Logo Paket (.SVG)</div>
-          <div class="download-box">Schriftart Paket (.TTF)</div>
+      <div class="card" style="background: var(--slate); color: #FFFFFF; border-left: 4px solid #115E67;">
+        <h3 style="color: #00E5FF;">Vorgabe: Offline-Verfügbarkeit &amp; PDF-Druck</h3>
+        <p style="color: #FFFFFF !important;">Nutzen Sie die folgenden Buttons, um das vollständige Handbuch lokal zu sichern:</p>
+        <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
+
+          <!-- OPTIMIERTER PRINT-BUTTON -->
+          <button class="flux-btn" onclick="printFullStyleguide()" style="background: #115E67; border: 1px solid #00E5FF; color: white; cursor: pointer; padding: 12px 24px; border-radius: 4px;">
+            🖨 Vollständigen Styleguide als PDF exportieren
+          </button>
+
+          <a href="flux-design-styleguide-offline.zip" download style="text-decoration:none;">
+            <div class="download-box" style="padding: 12px 24px; margin: 0; background: rgba(255,255,255,0.05); color: white; border-color: rgba(255,255,255,0.2); border-style: solid; border-width: 1px; border-radius: 4px;">
+              📦 Offline-Quellpaket herunterladen (.ZIP)
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -346,6 +1418,7 @@
   </main>
 </div>
 
+<!-- PROGRAMMLOGIK -->
 <script>
   let currentRole = "";
 
@@ -356,50 +1429,45 @@
       document.getElementById('selection-screen').style.display = 'none';
       document.getElementById('app-interface').classList.remove('hidden');
 
-      filterSidebarNavigation(); // Blendet irrelevante Menüpunkte komplett aus
-      updateRoleView();          // Aktualisiert den Text-Badge
+      filterSidebarNavigation();
+      updateRoleView();
 
-      // Leitet die Rolle sofort auf ihre wichtigste Startseite weiter
+      // Intelligente Fokus-Weiterleitung beim Start
       if (role === 'entwicklung') showSection('grid');
-      else if (role === 'sekretariat') showSection('communication');
+      else if (role === 'allgemein') showSection('philosophy');
       else showSection('philosophy');
     }, 400);
   }
 
   function filterSidebarNavigation() {
-    // Definiert haargenau, wer welche Menüpunkte sehen darf
+    // Die 3 neuen IDs ('social-feed', 'social-video', 'social-pr') wurden sauber integriert
     const accessMap = {
-      'sekretariat': ['philosophy', 'communication', 'downloads'],
-      'leitung':     ['philosophy', 'communication', 'logos', 'downloads'],
-      'design':      ['philosophy', 'communication', 'logos', 'typography', 'colors', 'photography', 'grid', 'components', 'animation', 'downloads'],
-      'entwicklung': ['philosophy', 'communication', 'typography', 'colors', 'grid', 'components', 'animation', 'downloads'],
-      'social':      ['philosophy', 'communication', 'logos', 'typography', 'colors', 'photography', 'downloads']
+      'allgemein':   ['philosophy', 'management', 'communication', 'mgt-vision', 'mgt-legal', 'mgt-governance', 'logos', 'typography', 'colors', 'photography', 'design-tonality', 'design-tokens', 'design-a11y', 'grid', 'components', 'compliance', 'animation', 'dev-architecture', 'dev-performance', 'dev-css', 'social-feed', 'social-video', 'social-pr', 'downloads'],
+      'leitung':     ['philosophy', 'mgt-vision', 'mgt-legal', 'mgt-governance', 'communication', 'downloads'],
+      'design':      ['philosophy', 'communication', 'logos', 'typography', 'colors', 'photography', 'design-tonality', 'design-tokens', 'design-a11y', 'grid', 'components', 'animation', 'downloads'],
+      'entwicklung': ['philosophy', 'communication', 'typography', 'colors', 'grid', 'components', 'compliance', 'animation', 'dev-architecture', 'dev-performance', 'dev-css', 'downloads'],
+      'social':      ['philosophy', 'communication', 'logos', 'typography', 'colors', 'photography', 'social-feed', 'social-video', 'social-pr', 'downloads'] // Social-Rechte erweitert
     };
 
     const allowedSections = accessMap[currentRole];
-
-    // 1. Navigation-Buttons filtern
     document.querySelectorAll('.menu-btn').forEach(btn => {
       const sectionId = btn.id.replace('nav-', '');
       btn.style.display = allowedSections.includes(sectionId) ? 'block' : 'none';
     });
 
-    // 2. Menü-Kategorien (Überschriften in der Sidebar) filtern, falls alle Unterpunkte leer sind
-    document.getElementById('cat-visual').style.display = (currentRole === 'sekretariat') ? 'none' : 'block';
-    document.getElementById('cat-tech').style.display = ['sekretariat', 'leitung', 'social'].includes(currentRole) ? 'none' : 'block';
+    document.getElementById('cat-visual').style.display = (currentRole === 'leitung') ? 'none' : 'block';
+    document.getElementById('cat-tech').style.display = ['leitung', 'social'].includes(currentRole) ? 'none' : 'block';
   }
 
   function updateRoleView() {
     const roleNames = {
-      'sekretariat': 'Sekretariat / Office',
+      'allgemein': 'Allgemeiner Styleguide (Vollzugriff)',
       'leitung': 'Geschäftsführung',
       'design': 'UI/UX Design & Brand',
       'entwicklung': 'Web-Entwicklung',
       'social': 'Social Media & PR'
     };
     document.getElementById('role-tag').innerText = "Bereich: " + roleNames[currentRole];
-
-    // Filtert spezifische Karteninhalte innerhalb einer geöffneten Seite
     document.querySelectorAll('.role-specific').forEach(el => {
       const allowedRoles = el.getAttribute('data-role').split(' ');
       el.style.display = allowedRoles.includes(currentRole) ? 'block' : 'none';
@@ -409,17 +1477,50 @@
   function showSection(id) {
     document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
-
     document.getElementById('sec-' + id).classList.add('active');
     document.getElementById('nav-' + id).classList.add('active');
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
+  function printFullStyleguide() {
+    // 1. Save current role state and active elements
+    const savedRole = currentRole;
+    const activeSection = document.querySelector('.content-section.active');
+    const activeMenuBtn = document.querySelector('.menu-btn.active');
+
+    // 2. Temporarily switch to 'allgemein' to unlock all chapters for the PDF
+    currentRole = 'allgemein';
+
+    // 3. Force display all navigation categories and content sections
+    document.getElementById('cat-visual').style.display = 'block';
+    document.getElementById('cat-tech').style.display = 'block';
+    document.querySelectorAll('.menu-btn').forEach(btn => btn.style.display = 'block');
+    document.querySelectorAll('.content-section').forEach(s => {
+      s.style.display = 'block';
+      s.classList.add('active');
+    });
+
+    // 4. Trigger print dialog after layout rendering
+    setTimeout(() => {
+      window.print();
+
+      // 5. Post-print: Restore original role profile and sidebar layout
+      currentRole = savedRole;
+      filterSidebarNavigation();
+
+      document.querySelectorAll('.content-section').forEach(s => {
+        s.style.display = '';
+        s.classList.remove('active');
+      });
+      if(activeSection) activeSection.classList.add('active');
+      if(activeMenuBtn) activeMenuBtn.classList.add('active');
+    }, 300);
+  }
+
+
   function changeSlide(index) {
     const bg = document.getElementById('logo-slide-bg');
-    const w1 = document.getElementById('wave1');
-    const w2 = document.getElementById('wave2');
-    const w3 = document.getElementById('wave3');
+    const img = document.getElementById('slide-logo-img');
     const title = document.getElementById('slide-title');
     const text = document.getElementById('slide-text');
 
@@ -428,20 +1529,30 @@
     });
 
     if (index === 0) {
-      bg.style.backgroundColor = '#F4F6F6';
-      w1.setAttribute('fill', '#115E67'); w2.setAttribute('fill', '#115E67'); w3.setAttribute('fill', '#115E67');
+      bg.style.backgroundColor = '#FFFFFF';
+      img.src = 'fd4.jpg';
       title.innerText = "01. Standard-Anwendung auf hellem Grund";
-      text.innerText = "Auf hellen Flächen strahlt das primäre Azurblau (#115E67). Die Deckkraft-Abstufungen der drei Wellenelemente müssen exakt eingehalten werden.";
+      text.innerText = "Auf rein weißen Medienflächen und primären Digital-Dokumenten wird das Logo homogen im tiefen Azur-Petrol abgebildet (fd4.jpg). Es transportiert Stabilität und gestalterische Ruhe.";
     } else if (index === 1) {
-      bg.style.backgroundColor = '#0B1A1E';
-      w1.setAttribute('fill', '#00E5FF'); w2.setAttribute('fill', '#00E5FF'); w3.setAttribute('fill', '#00E5FF');
-      title.innerText = "02. Dark-Mode Anwendung für Code-Interfaces";
-      text.innerText = "Im internen Code-Editor wechselt die Umgebung auf Muted Slate. Das Logo leuchtet hier in einer hochpräzisen, neon-blauen Kontrastvariante.";
+      bg.style.backgroundColor = '#E5E8E8';
+      img.src = 'FD2.jpg';
+      title.innerText = "02. Corporate Dark auf Schiefer-Struktur";
+      text.innerText = "Auf dunklen System-Hintergründen, Editor-Flächen oder veredeltem Briefpapier wird das Logo in der weißen Linien-Variante auf unserem tiefen Corporate-Hintergrund inszeniert (FD2.jpg).";
     } else if (index === 2) {
-      bg.style.backgroundColor = '#115E67';
-      w1.setAttribute('fill', '#FFFFFF'); w2.setAttribute('fill', '#FFFFFF'); w3.setAttribute('fill', '#FFFFFF');
-      title.innerText = "03. Monochrome Negativ-Variante";
-      text.innerText = "Bei Briefstempeln oder vollfarbigen Hintergründen wird das Logo reinweiß ausgespart. Die Opazitäten (Deckkraft) bleiben unberührt.";
+      bg.style.backgroundColor = '#FFFFFF';
+      img.src = 'fd3.jpg';
+      title.innerText = "03. Monochrome Positiv-Variante (Tiefschwarz)";
+      text.innerText = "Für den Einsatz in rein funktionalen Medien, technischen Spezifikationen, Faxen oder Stempeldrucken kommt die monochrome, tiefschwarze Variante auf hellem Grund zum Einsatz (fd3.jpg).";
+    } else if (index === 3) {
+      bg.style.backgroundColor = '#FFFFFF';
+      img.src = 'fdw.jpg';
+      title.innerText = "04. Monochrome Negativ-Variante (Lichtgrau)";
+      text.innerText = "Auf neutralen, grauen Dokumenten-Flächen oder texturierten Kartonagen wird die weiße Bildmarke als harmonische Aussparung auf hellem Steingrau abgebildet (fdw.jpg).";
+    } else if (index === 4) {
+      bg.style.backgroundColor = '#FADBD8'; // Warnfarbe für den Hintergrund (hellrot)
+      img.src = 'fdpink.jpg';
+      title.innerText = "05. STRIKT UNZULÄSSIG: Farb- und Strukturentfremdung";
+      text.innerText = "Es ist unter allen Umständen verboten, das Logo in nicht-definierten, fremden Mode-Farben wie Magenta/Pink abzubilden (fdpink.jpg). Dies bricht die visuelle Ernsthaftigkeit unseres Premium-Anspruchs und zerstört die Markenidentität.";
     }
   }
 </script>

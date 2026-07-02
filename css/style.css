@@ -19,7 +19,7 @@ body { background-color: var(--offwhite); color: var(--text-dark); font-family: 
 
 /* STARTBILDCHIRM */
 .overlay {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  position:fixed ; top: 0; left: 0; width: 100%; height: 100%;
   background-color: var(--slate); display: flex; justify-content: center; align-items: center;
   z-index: 3000; transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--white);
@@ -227,4 +227,19 @@ body { background-color: var(--offwhite); color: var(--text-dark); font-family: 
   .print-only-slides {
     display: block !important; /* Macht alle Logo-Varianten im PDF sichtbar! */
   }
+}
+
+/* Der Button ist standardmäßig versteckt */
+.btn-back {
+  display: flex;
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  /* ... restliche Styles ... */
+}
+
+/* Wenn das App-Interface aktiv ist, zeige den Button */
+#app-interface:not(.hidden) ~ .btn-back {
+  display: flex;
 }

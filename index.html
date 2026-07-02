@@ -51,8 +51,8 @@
   </div>
 </div>
 
-<!-- HAUPT-INTERFACE -->
 <div id="app-interface" class="app-container hidden">
+
 
   <!-- SEITENLEISTE NAVIGATION -->
 
@@ -72,6 +72,7 @@
       <button id="nav-mgt-vision" class="menu-btn" onclick="showSection('mgt-vision')">Mgt: Marken-Vision</button>
       <button id="nav-mgt-legal" class="menu-btn" onclick="showSection('mgt-legal')">Mgt: Markenschutz</button>
       <button id="nav-mgt-governance" class="menu-btn" onclick="showSection('mgt-governance')">Mgt: Quality Governance</button>
+      <button id="nav-templates" class="menu-btn" onclick="showSection('templates')">Design: Folien-Vorlagen</button>
 
       <div class="menu-category" id="cat-visual">Visuelle Identität</div>
       <button id="nav-logos" class="menu-btn" onclick="showSection('logos')">Logo-Architektur</button>
@@ -103,6 +104,10 @@
   <!-- HAUPTINHALT STAGE -->
   <main class="content-stage">
 
+    <button class="btn-back" onclick="resetToRoleSelection()" style="display: none !important; position: fixed; top: 24px; right: 24px; background: #0B1A1E; border: 1px solid #115E67; color: #F4F6F6; padding: 10px 20px; cursor: pointer; align-items: center; gap: 8px; min-height: 44px; font-family: 'Plus Jakarta Sans', sans-serif; z-index: 999999; pointer-events: auto !important; border-radius: 4px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.2s ease-in-out;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F4F6F6" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Zurück zur Rollenauswahl
+    </button>
 
 
     <!-- Sektion 01: GRUNDWERTE & CORE IDENTITY -->
@@ -169,6 +174,8 @@
           </tbody>
         </table>
       </div>
+
+
 
       <div class="card">
         <h3>3. Brand Governance: Freigabeprozesse bei Abweichungen</h3>
@@ -333,7 +340,63 @@
       </div>
     </section>
 
+<!--PRÄSENTATIONSFOLIEN-->
+    <section id="sec-templates" class="content-section">
+      <div class="section-hero" style="margin-bottom: 32px;">
+        <span class="meta-title">06 / Medien-Vorlagen</span>
+        <h2>Präsentationsfolien (Slide Engine)</h2>
+        <p class="lead">Standardisierte Folien-Layouts für Kundenpräsentationen, kalibriert auf unser Corporate Design.</p>
+      </div>
 
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 480px)); gap: 32px; margin-bottom: 48px;">
+
+        <div class="slide-preview-card" style="background: #1e1e1e; padding: 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); max-width: 480px;">
+          <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; color: #888; margin-bottom: 8px;">Variante 01: Titelfolie (Premium Dark)</p>
+
+          <div style="background: var(--slate); aspect-ratio: 16/9; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+
+            <div style="display: flex; flex-direction: column; align-items: center; width: fit-content; gap: 4px;">
+              <img src="FD2.png" alt="Flux Design Logo" style="width: 32px; height: 32px; object-fit: contain;">
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: #fff; letter-spacing: 2px; line-height: 1; text-align: center;">FLUXDESIGN</div>
+            </div>
+
+            <div style="margin-top: auto; margin-bottom: auto;">
+              <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: #fff; line-height: 1.1; margin-bottom: 4px; text-transform: uppercase;">Digitale Erlebnisse<br><span style="color: var(--azur);">Radikal Minimalistisch.</span></h3>
+              <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; color: #a0a0a0; margin: 0;">Konzept & Strategie für Premium-Marken</p>
+            </div>
+
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; color: var(--azur); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;">© 2026 Flux Design Agency</div>
+          </div>
+        </div>
+
+        <div class="slide-preview-card" style="background: #1e1e1e; padding: 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); max-width: 480px;">
+          <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; color: #888; margin-bottom: 8px;">Variante 02: Inhaltsfolie (Clean Light)</p>
+
+          <div style="background: #ffffff; aspect-ratio: 16/9; padding: 20px 24px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border: 1px solid #e0e0e0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--slate); padding-bottom: 6px;">
+              <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--slate); margin: 0;">01 / Markenphilosophie</h4>
+              <span style="font-family: 'Bebas Neue', sans-serif; font-size: 12px; color: var(--azur);">FLUXDESIGN</span>
+            </div>
+
+            <div style="margin: 16px 0; flex-grow: 1;">
+              <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--slate); margin-bottom: 12px;">Gutes Design spart Zeit durch maximale Klarheit:</p>
+              <ul style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; color: #4a4a4a; padding-left: 16px; line-height: 1.6;">
+                <li style="margin-bottom: 8px;"><strong> Radikaler Minimalismus</strong> als Antwort auf austauschbare Netzerlebnisse. </li>
+                <li style="margin-bottom: 8px;"><strong>Absolute Präzision</strong> in Code und pixelgenauer Gestaltung.</li>
+                <li style="margin-bottom: 0;">10<strong>0%-Sorglos-Versprechen</strong> für High-End-Ansprüche.</li>
+              </ul>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8px; color: #888;">
+              <span>Flux Design Core System v1.0</span>
+              <span>Seite 03</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
     <!-- **Sektion 03 (Logo-Architektur)-->
 
       <section id="sec-logos" class="content-section">
@@ -524,7 +587,7 @@
         <p style="margin-bottom: 20px;">Für großflächige UI-Komponenten, Hintergrund-Abschnitte und Hero-Banner verwenden wir anstelle von flachen Volltonfarben einen mathematisch berechneten, diagonalen Farbverlauf. Dieser verbindet unsere primäre und sekundäre Markenfarbe im 45 Grad-Winkel:</p>
 
         <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center; background: #E5E8E8; padding: 25px; border-radius: 6px;">
-          <div style="flex: 1.5; min-width: 280px; aspect-ratio: 16/7; background: linear-gradient(135deg, #115E67 0%, #0B1A1E 100%); border-radius: 4px; border: 1px solid #BDC3C7; box-shadow: inset 0 0 20px rgba(0,0,0,0.4); position: relative;">
+          <div style="flex: 1.5; min-width: 280px; aspect-ratio: 16/7; background: linear-gradient(135deg, #115E67 0%, #0B1A1E 100%); border-radius: 4px; border: 1px solid #BDC3C7; box-shadow: inset 0 0 20px rgba(0,0,0,0.4); position: absolute;">
             <span style="position: absolute; left: 15px; top: 15px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 1px;">START: AZURBLAU (HELL)</span>
             <span style="position: absolute; right: 15px; bottom: 15px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 1px;">ENDMÜNDUNG: SLATE (DUNKEL)</span>
           </div>
@@ -840,7 +903,7 @@
 
       <div class="card">
         <h3>1. Die 8px-Core-Engine: Das Prinzip der linearen Skalierung</h3>
-        <p>Abstände, Innenränder (Paddings) und Außenabstände (Margins) werden bei Flux Design niemals nach Gefühl oder Schätzung gewählt. Das gesamte Design-System skaliert linear entlang einer **proportionalen 8px-Raster-Matrix**. Jedes Element, jede Karte und jeder Weißraum muss durch 8 teilbar sein. Dies schafft eine unbewusste gestalterische Ruhe und sorgt im Code für saubere, vorhersagbare CSS-Schnittstellen.</p>
+        <p>Abstände, Innenränder (Paddings) und Außenabstände (Margins) werden bei Flux Design niemals nach Gefühl oder Schätzung gewählt. Das gesamte Design-System skaliert linear entlang einer <strong> proportionalen 8px-Raster-Matrix</strong>. Jedes Element, jede Karte und jeder Weißraum muss durch 8 teilbar sein. Dies schafft eine unbewusste gestalterische Ruhe und sorgt im Code für saubere, vorhersagbare CSS-Schnittstellen.</p>
 
         <div style="margin-top: 15px; padding: 15px; background: var(--offwhite); border-radius: 4px; font-family: monospace; font-size: 13px; border-left: 3px solid var(--azur);">
           <strong>Zulässige Skalierungsschritte (Spacing Tokens):</strong><br>
@@ -1037,6 +1100,7 @@
             </ul>
           </div>
         </div>
+      </div>
       </div>
     </section>
     <!-- Sektion 09: DATENSCHUTZ & DIGITAL COMPLIANCE (DETAILLIERT) -->
@@ -1403,12 +1467,12 @@
 
           <!-- OPTIMIERTER PRINT-BUTTON -->
           <button class="flux-btn" onclick="printFullStyleguide()" style="background: #115E67; border: 1px solid #00E5FF; color: white; cursor: pointer; padding: 12px 24px; border-radius: 4px;">
-            🖨 Vollständigen Styleguide als PDF exportieren
-          </button>
+            <img src="img_1.png" height="16" width="16"/> Vollständigen Styleguide als PDF exportieren
+            </button>
 
           <a href="flux-design-styleguide-offline.zip" download style="text-decoration:none;">
             <div class="download-box" style="padding: 12px 24px; margin: 0; background: rgba(255,255,255,0.05); color: white; border-color: rgba(255,255,255,0.2); border-style: solid; border-width: 1px; border-radius: 4px;">
-              📦 Offline-Quellpaket herunterladen (.ZIP)
+              <img src="img.png" alt="icon" height="16" width="16" /> Offline-Quellpaket herunterladen (.ZIP)
             </div>
           </a>
         </div>
@@ -1417,6 +1481,7 @@
 
   </main>
 </div>
+
 
 <!-- PROGRAMMLOGIK -->
 <script>
@@ -1428,6 +1493,8 @@
     setTimeout(() => {
       document.getElementById('selection-screen').style.display = 'none';
       document.getElementById('app-interface').classList.remove('hidden');
+
+      document.querySelector('.btn-back').style.setProperty('display', 'flex', 'important');
 
       filterSidebarNavigation();
       updateRoleView();
@@ -1443,7 +1510,7 @@
     // Die 3 neuen IDs ('social-feed', 'social-video', 'social-pr') wurden sauber integriert
     const accessMap = {
       'allgemein':   ['philosophy', 'management', 'communication', 'mgt-vision', 'mgt-legal', 'mgt-governance', 'logos', 'typography', 'colors', 'photography', 'design-tonality', 'design-tokens', 'design-a11y', 'grid', 'components', 'compliance', 'animation', 'dev-architecture', 'dev-performance', 'dev-css', 'social-feed', 'social-video', 'social-pr', 'downloads'],
-      'leitung':     ['philosophy', 'mgt-vision', 'mgt-legal', 'mgt-governance', 'communication', 'downloads'],
+      'leitung':     ['philosophy', 'mgt-vision', 'mgt-legal', 'mgt-governance', 'communication', 'templates', 'downloads'],
       'design':      ['philosophy', 'communication', 'logos', 'typography', 'colors', 'photography', 'design-tonality', 'design-tokens', 'design-a11y', 'grid', 'components', 'animation', 'downloads'],
       'entwicklung': ['philosophy', 'communication', 'typography', 'colors', 'grid', 'components', 'compliance', 'animation', 'dev-architecture', 'dev-performance', 'dev-css', 'downloads'],
       'social':      ['philosophy', 'communication', 'logos', 'typography', 'colors', 'photography', 'social-feed', 'social-video', 'social-pr', 'downloads'] // Social-Rechte erweitert
@@ -1554,6 +1621,22 @@
       title.innerText = "05. STRIKT UNZULÄSSIG: Farb- und Strukturentfremdung";
       text.innerText = "Es ist unter allen Umständen verboten, das Logo in nicht-definierten, fremden Mode-Farben wie Magenta/Pink abzubilden (fdpink.jpg). Dies bricht die visuelle Ernsthaftigkeit unseres Premium-Anspruchs und zerstört die Markenidentität.";
     }
+  }
+
+  function resetToRoleSelection() {
+    // 1. Versteckt den Button wieder sauber mit Priorität
+    document.querySelector('.btn-back').style.setProperty('display', 'none', 'important');
+
+    // 2. Versteckt das Haupt-Interface (wird wieder unsichtbar)
+    document.getElementById('app-interface').classList.add('hidden');
+
+    // 3. Holt den Startbildschirm zurück und setzt das Display aktiv zurück
+    document.getElementById('selection-screen').style.display = 'flex';
+    document.getElementById('selection-screen').classList.remove('fade-out');
+    document.getElementById('selection-screen').classList.remove('hidden');
+
+    // 4. Scrollt die Seite sanft ganz nach oben
+    window.scrollTo(0, 0);
   }
 </script>
 </body>
